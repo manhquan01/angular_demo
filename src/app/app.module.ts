@@ -17,6 +17,13 @@ import { EmployeeService } from './employee.service';
 import { EmployeeDetailComponent } from './employee-detail/employee-detail.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
+import { EditUserApiComponent } from './users-api/edit-user-api/edit-user-api.component';
+import { AddUserApiComponent } from './users-api/add-user-api/add-user-api.component';
+import { MoviesComponent } from './ToanNV/movies/movies.component';
+import { MovieService } from './movie.service';
+import { DashboardComponent } from './ToanNV/dashboard/dashboard.component';
+import { MovieDetailComponent } from './ToanNV/movie-detail/movie-detail.component';
+
 
 @NgModule({
     declarations: [
@@ -28,19 +35,25 @@ import { FormsModule } from '@angular/forms';
         MessageComponent,
         ListUsersComponent,
         EmployeesComponent,
-        EmployeeDetailComponent
+        EmployeeDetailComponent,
+        EditUserApiComponent,
+        AddUserApiComponent,
+        MoviesComponent,
+        MovieDetailComponent,
+        DashboardComponent
     ],
     imports: [
         BrowserModule,
         AppRoutingModule,
         HttpClientModule,
         ReactiveFormsModule,
-        FormsModule
+        FormsModule,
     ],
     providers: [
         UserService,
         MessageService,
-        EmployeeService
+        EmployeeService,
+        MovieService,
     ],
     bootstrap: [AppComponent]
 })
