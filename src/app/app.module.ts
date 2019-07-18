@@ -12,6 +12,9 @@ import { MessageComponent } from './Categories/message/message.component';
 import {MessageService} from './message.service';
 import { ListUsersComponent } from './users-api/list-users/list-users.component';
 import { HttpClientModule} from '@angular/common/http';
+import { EditUserApiComponent } from './users-api/edit-user-api/edit-user-api.component';
+import {FormsModule} from '@angular/forms';
+import { AddUserApiComponent } from './users-api/add-user-api/add-user-api.component';
 
 @NgModule({
     declarations: [
@@ -21,12 +24,15 @@ import { HttpClientModule} from '@angular/common/http';
         ListCategoriesComponent,
         DetailCategoryComponent,
         MessageComponent,
-        ListUsersComponent
+        ListUsersComponent,
+        EditUserApiComponent,
+        AddUserApiComponent
     ],
     imports: [
         BrowserModule,
         AppRoutingModule,
         HttpClientModule,
+        FormsModule,
     ],
     providers: [
         UserService,

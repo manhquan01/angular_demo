@@ -3,7 +3,4 @@ export class UserApi {
     name: string;
     email: string;
     phoneNumber: string;
-    avatar: string;
-    role: number;
-    activated: number;
 }
