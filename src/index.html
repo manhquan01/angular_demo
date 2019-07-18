@@ -67,6 +67,18 @@
 <!-- App js -->
 <script src="assets/js/jquery.core.js"></script>
 <script src="assets/js/jquery.app.js"></script>
-
+<script>
+    var i = 0;
+    function showForm() {
+        ++i;
+        console.log('click');
+        var form = document.getElementById("formInsert");
+        if(i%2 != 0) {
+            form.classList.remove("hidden");
+        } else {
+            form.classList.add("hidden");
+        }
+    }
+</script>
 </body>
 </html>

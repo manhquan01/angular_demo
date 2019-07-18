@@ -1,0 +1,40 @@
+<div class="page-title-box">
+    <h4 class="page-title">{{titlePage}}</h4>
+    <div class="clearfix"></div>
+</div>
+
+<form>
+    <p>name: {{name.value}}</p>
+    <p>email: {{email.value}}</p>
+    <p>phone: {{phone.value}}</p>
+    <div class="row">
+        <div class="form-group m-b-20 col-md-10 col-sm-12 col-xs-12">
+            <label for="exampleInputName">Name</label>
+            <input [(ngModel)]="name.value" #name type="text" name="name" class="form-control"
+                   id="exampleInputName" placeholder="Enter title" required="">
+        </div>
+    </div>
+
+    <div class="form-group m-b-20">
+        <label for="exampleInputEmail">Email</label>
+        <input [(ngModel)]="email.value" ngModel="" #email type="text" name="email" class="form-control"
+               id="exampleInputEmail" placeholder="Static Link">
+    </div>
+
+    <div class="form-group m-b-20">
+        <label for="exampleInputPhone">Phone Number</label>
+        <input [(ngModel)]="phone.value" #phone type="text" name="phone" class="form-control"
+               id="exampleInputPhone" placeholder="Static Link">
+    </div>
+
+    <button type="button" (click)="goBack()" class="btn btn-danger waves-effect waves-light">Back</button>
+    <button type="button"
+            (click)="addUser(name.value, email.value, phone.value);
+            name.value = '';
+            email.value='';
+            phone.value=''"
+            id="save_post"
+            class="btn btn-info waves-effect waves-light"
+    >Create</button>
+    <!--<input type="hidden" name="_token" value="rS3X85YYX1Dvr2l9d5uzCvh72MzanSGReVtUvMOr">-->
+</form>

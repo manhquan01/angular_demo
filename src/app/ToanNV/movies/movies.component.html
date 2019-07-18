@@ -1,0 +1,54 @@
+<h2>Phim yêu thích</h2>
+
+<div>
+  <table>
+    <tr>
+      <td>Tên Phim: </td>
+      <td>
+        <input #movieName placeholder="Tên phim">
+      </td>
+    </tr>
+    <tr>
+      <td>Năm: </td>
+      <td>
+        <input #yearMovie placeholder="Năm sx" >
+      </td>
+    </tr>
+    <tr>
+      <button (click)="add(movieName.value, yearMovie.value); movieName.value=''; yearMovie.value=''">
+        thêm
+      </button>
+    </tr>
+  </table>
+</div>
+<div class="parent">
+  <ol class="movies">
+      <li class="movieListItem"
+          *ngFor="let eachMovie of movies">
+        <a routerLink="/detail/{{eachMovie.id}}">
+          {{eachMovie.name}} - {{eachMovie.year}}
+        </a>
+        <button title="xóa phim"
+                (click)="delete(eachMovie.id)">
+          Xóa
+        </button>
+      </li>
+    </ol>
+    <!-- <app-movie-detail [movie]="selectedMovie"></app-movie-detail> -->
+</div>
+
+<!-- <h2>Phim yêu thích</h2>
+<div class="parent">
+  <ol class="movies">
+      <li class="movieListItem"
+          [class.selected]="eachMovie === selectedMovie"
+          *ngFor="let eachMovie of movies"
+          (click)="onSelect(eachMovie)"
+          routerLink="/detail/{{eachMovie.id}}"
+      >
+        {{eachMovie.name}} - {{eachMovie.year}}
+      </li>
+    </ol>
+    <app-movie-detail [movie]="selectedMovie"></app-movie-detail>
+</div> -->
+

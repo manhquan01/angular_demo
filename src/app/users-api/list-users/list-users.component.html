@@ -3,6 +3,8 @@
     <div class="clearfix"></div>
 </div>
 
+<button type="button" routerLink="/user-api-add" class="btn btn-default waves-effect waves-light">Add User</button>
+
 <table class="table table table-hover m-0">
     <thead>
     <tr>
@@ -11,19 +13,19 @@
         <th>Action</th>
     </tr>
     </thead>
-    <tbody *ngFor="let item of users">
-        <tr *ngFor="let each of item.data">
+    <tbody *ngIf="users">
+        <tr *ngFor="let each of users">
             <td>{{each.id}}</td>
             <td> {{ each.name }}</td>
             <td>
                 <div style="display: inline-block">
-                    <a >
+                    <a routerLink="/user-api/{{each.id}}">
                         <button class="btn_edit">
                             <i class="ion-edit"></i>
                         </button>
                     </a>
-                    <a class="btn_delete" href="#">
-                        <button class="btn_del">
+                    <a (click)="delete(each.id)" class="btn_delete">
+                        <button type="button" class="btn_del">
                             <i class="ion-trash-a"></i>
                         </button>
                     </a>
