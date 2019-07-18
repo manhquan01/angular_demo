@@ -12,6 +12,11 @@ import { MessageComponent } from './Categories/message/message.component';
 import {MessageService} from './message.service';
 import { ListUsersComponent } from './users-api/list-users/list-users.component';
 import { HttpClientModule} from '@angular/common/http';
+import { MoviesComponent } from './ToanNV/movies/movies.component';
+import { MovieService } from './movie.service';
+import { DashboardComponent } from './ToanNV/dashboard/dashboard.component';
+import { MovieDetailComponent } from './ToanNV/movie-detail/movie-detail.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -21,16 +26,21 @@ import { HttpClientModule} from '@angular/common/http';
         ListCategoriesComponent,
         DetailCategoryComponent,
         MessageComponent,
-        ListUsersComponent
+        ListUsersComponent,
+        MoviesComponent,
+        MovieDetailComponent,
+        DashboardComponent
     ],
     imports: [
         BrowserModule,
         AppRoutingModule,
         HttpClientModule,
+        FormsModule,
     ],
     providers: [
         UserService,
         MessageService,
+        MovieService,
     ],
     bootstrap: [AppComponent]
 })
