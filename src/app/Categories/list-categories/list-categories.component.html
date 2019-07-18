@@ -1,0 +1,28 @@
+<div class="page-title-box">
+    <h4 class="page-title">{{titlePage}}</h4>
+    <div class="clearfix"></div>
+</div>
+
+<div>
+    <div class="col-lg-6 col-sm-6">
+        <table class="table table table-hover m-0">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let item of categories"
+                (click)="getDetailItem(item)"
+                [class.selected]="item === detailItem">
+                <td>{{ item.id }}</td>
+                <td>{{ item.name }}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-lg-6 col-sm-6" *ngIf="detailItem">
+        <app-detail-category [category] = "detailItem"></app-detail-category>
+    </div>
+</div>

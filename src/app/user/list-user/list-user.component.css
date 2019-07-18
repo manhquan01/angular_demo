@@ -1,0 +1,14 @@
+.btn_edit {
+    border: none;
+    background: transparent;
+    float: left;
+}
+
+.btn_del {
+    border: none;
+    background: transparent;
+    float: left;
+}
+#paginate {
+    text-align: center;
+}

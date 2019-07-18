@@ -1,0 +1,34 @@
+<div class="page-title-box">
+    <h4 class="page-title">{{titlePage}}</h4>
+    <div class="clearfix"></div>
+</div>
+
+<table class="table table table-hover m-0">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of users">
+        <td>{{ item.id }}</td>
+        <td>{{ item.name }}</td>
+        <td>
+            <div style="display: inline-block">
+                <a [routerLink]="['/user', item.id, 'edit']">
+                    <button class="btn_edit">
+                        <i class="ion-edit"></i>
+                    </button>
+                </a>
+                <a class="btn_delete" href="#">
+                    <button class="btn_del">
+                        <i class="ion-trash-a"></i>
+                    </button>
+                </a>
+            </div>
+        </td>
+    </tr>
+    </tbody>
+</table>
