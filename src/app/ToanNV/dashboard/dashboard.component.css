@@ -5,16 +5,16 @@
     width: 25%;
 }
 .movie-box {
-    padding: 20px;
+    padding: 10px;
     text-align: center;
     color: #eee;
-    max-height: 120px;
-    min-width: 120px;
-    background: chartreuse;
+    max-height: 60px;
+    min-width: 60px;
+    background: rgb(83, 159, 230);
     border-radius: 20px;
 }
 .movie-box:hover{
-    background: greenyellow;
+    background: rgb(33, 116, 224);
     cursor: pointer;
     color: #eee;
 }

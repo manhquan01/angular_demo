@@ -1,17 +1,24 @@
-<div *ngIf="movie" class="details"> 
-    <!-- /* kiểm tra nếu thẻ div này != null (tồ tại) thì hiện thẻ div này ra/* -->
-    <h3>Bạn đã chọn phim: {{movie.name}} . Details</h3>
-    <table>
-      <tr>
-        <td>name: </td>
-        <td><input type="text" [(ngModel)]="movie.name"></td>
-      </tr>
-      <tr>
-        <td>Year</td>
-        <input type="text" [(ngModel)]="movie.year">
-      </tr>
-    </table>
-    <button (click)="save()">Lưu</button>
-    <button (click)="goBack()">quay lại</button>
 
+<div *ngIf="movie" class="row">
+    <div class="col-xs-4">
+        <div className="panel panel-warning">
+            <h5>Bạn đã chọn phim:</h5>  <h4>{{movie.name}}</h4>
+            <div className="panel-body">
+              <form>
+                  <div class="form-group">
+                      <label>Tên phim: </label>
+                      <input class="form-control" [(ngModel)]="movie.name" name="name" >
+                      <label class="mt-5" for="">Năm sản xuất: </label>
+                      <input class="form-control" [(ngModel)]="movie.year" name="year"  >
+                      <div class="mt-5">
+                          <button class="btn btn-primary mr-15" (click)="save()">
+                              Lưu
+                          </button>
+                          <button class="btn btn-info " (click)="goBack()">quay lại</button>
+                      </div>
+                    </div>
+              </form>
+          </div>
+        </div>
+      </div>
 </div>

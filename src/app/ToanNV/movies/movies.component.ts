@@ -10,11 +10,12 @@ import { MovieService } from 'src/app/movie.service';
   styleUrls: ['./movies.component.css']
 })
 export class MoviesComponent implements OnInit {
-  // movies = fakeMovies;
-  movies: Movie[];
   constructor(private movieService: MovieService) {
     // ngay khi component khởi tạo thì thuộc tính movieService cũng được khởi tạo theo
   }
+  // movies = fakeMovies;
+  movies: Movie[];
+  selectedMovie: Movie; // định nghĩa hàm khi con trỏ chạm vào list item
   getMoviesFromServices(): void { // lấy dữ liệu từ service đổ vào mảng movies
     // this.movies = this.movieService.getMovies();
     this.movieService.getMovies().subscribe(
@@ -48,11 +49,10 @@ export class MoviesComponent implements OnInit {
   ngOnInit() {
     this.getMoviesFromServices();
   }
-  // selectedMovie: Movie; //định nghĩa hàm khi con trỏ chạm vào list item
-  // onSelect(movie: Movie): void{ //event
-  //   this.selectedMovie = movie; // thuộc tính để lưu đối tượng ta select lại
-  //   console.log(this.selectedMovie);
-  //   // alert(this.selectedMovie);
-  // }
+  onSelect(movie: Movie): void { // event
+    this.selectedMovie = movie; // thuộc tính để lưu đối tượng ta select lại
+    console.log(this.selectedMovie);
+    // alert(this.selectedMovie);
+  }
 
 }

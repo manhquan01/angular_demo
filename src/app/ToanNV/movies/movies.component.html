@@ -21,7 +21,7 @@
         </div>
       </div>
 </div>
-<div class="row">
+<div class="row parent">
   <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
       <table class="table table-bordered table-hover">
@@ -36,20 +36,26 @@
         </thead>
         <tbody>
           <tr  *ngFor="let eachMovie of movies">
-            <td>
+            <td class="text-center">
                 {{eachMovie.id}}
             </td>
-            <td> 
-              <a routerLink="/detail/{{eachMovie.id}}">
+            <td [class.selected]="eachMovie === selectedMovie"
+                (click)="onSelect(eachMovie)"> 
+              
                 {{eachMovie.name}}
-              </a>
+             
             </td>
-            <td> 
-                <a routerLink="/detail/{{eachMovie.id}}">
+            <td class="text-center"> 
                   {{eachMovie.year}}
-                </a>
             </td>
-            <td>
+            <td class="text-center">
+              <button title="xóa phim"
+                      class="btn btn-warning mr-15">
+
+                <a routerLink="/detail/{{eachMovie.id}}">
+                  Sửa
+                </a>
+              </button>
               <button title="xóa phim"
                       class="btn btn-danger"
                       (click)="delete(eachMovie.id)">
@@ -61,21 +67,17 @@
       </table>
     </div>
   </div>
-</div>
-<div class="row">
-      <div class="row parent col-md-4 col-xs-4">
-        <ol class="movies">
-            <li class="movieListItem"
-                *ngFor="let eachMovie of movies">
-              <a routerLink="/detail/{{eachMovie.id}}">
-                {{eachMovie.name}} - {{eachMovie.year}}
-              </a>
-              <button title="xóa phim"
-                      (click)="delete(eachMovie.id)">
-                Xóa
-              </button>
-            </li>
-          </ol>
-          <!-- <app-movie-detail [movie]="selectedMovie"></app-movie-detail> -->
-      </div>
+  <div *ngIf="selectedMovie" class="details">
+    <h3>{{selectedMovie.name}}</h3>
+    <table>
+      <tr>
+        <td>Tên Phim: </td>
+        <td><input [(ngModule)]="selectedMovie.name" ></td>
+      </tr>
+      <tr>
+          <td>Năm phát hành</td>
+          <td><input [(ngModule)]="selectedMovie.year" ></td>
+        </tr>
+    </table>
+  </div>
 </div>
