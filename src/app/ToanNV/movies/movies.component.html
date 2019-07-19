@@ -67,17 +67,28 @@
       </table>
     </div>
   </div>
-  <div *ngIf="selectedMovie" class="details">
-    <h3>{{selectedMovie.name}}</h3>
-    <table>
-      <tr>
-        <td>Tên Phim: </td>
-        <td><input [(ngModule)]="selectedMovie.name" ></td>
-      </tr>
-      <tr>
-          <td>Năm phát hành</td>
-          <td><input [(ngModule)]="selectedMovie.year" ></td>
-        </tr>
-    </table>
+  <div *ngIf="selectedMovie" class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <table class="table table-bordered table-hover">
+        <thead class="text-center">
+          <tr>
+            <td colspan="4">
+                <h4>Thông tin phim: </h4>
+            </td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>Tên Phim: </th>
+            <td colspan="3">{{selectedMovie.name}}</td>
+          </tr>
+          <tr>
+            <th>Năm :</th>
+            <td colspan="3">{{selectedMovie.year}}</td>
+            <!-- <td><input [(ngModule)]="selectedMovie.year" ></td> -->
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>

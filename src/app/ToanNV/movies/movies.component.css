@@ -13,7 +13,7 @@
     background: #cccc
   }
   .selected{
-    background: blueviolet !important;
+    background: rgb(95, 154, 243) !important;
     color: white;
   }
   .parent {
