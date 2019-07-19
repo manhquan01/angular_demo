@@ -23,6 +23,7 @@ import { MoviesComponent } from './ToanNV/movies/movies.component';
 import { MovieService } from './movie.service';
 import { DashboardComponent } from './ToanNV/dashboard/dashboard.component';
 import { MovieDetailComponent } from './ToanNV/movie-detail/movie-detail.component';
+import { MovieSearchComponent } from './ToanNV/movie-search/movie-search.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { MovieDetailComponent } from './ToanNV/movie-detail/movie-detail.compone
         AddUserApiComponent,
         MoviesComponent,
         MovieDetailComponent,
-        DashboardComponent
+        DashboardComponent,
+        MovieSearchComponent
     ],
     imports: [
         BrowserModule,
