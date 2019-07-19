@@ -10,11 +10,12 @@ import { MovieService } from 'src/app/movie.service';
   styleUrls: ['./movies.component.css']
 })
 export class MoviesComponent implements OnInit {
-  // movies = fakeMovies;
-  movies: Movie[];
   constructor(private movieService: MovieService) {
     // ngay khi component khởi tạo thì thuộc tính movieService cũng được khởi tạo theo
   }
+  // movies = fakeMovies;
+  movies: Movie[];
+  selectedMovie: Movie; // định nghĩa hàm khi con trỏ chạm vào list item
   getMoviesFromServices(): void { // lấy dữ liệu từ service đổ vào mảng movies
     // this.movies = this.movieService.getMovies();
     this.movieService.getMovies().subscribe(
@@ -38,8 +39,8 @@ export class MoviesComponent implements OnInit {
       });
   }
   delete(movieId: number): void {
-    this.movieService.deleteMovie(movieId).subscribe(_ => { // quan sát khi anof có kết quae thì chui vào
-      // khi nào có respin thì sử dụng hàm filter lọc ra nhũng bản ghi thỏa mãn ddieuf kiện phía bên phải mũi tên để xóa phần tử trong mảng
+    this.movieService.deleteMovie(movieId).subscribe(_ => { // quan sát khi nào có kết quả thì chui vào
+      // khi nào có respon thì sử dụng hàm filter lọc ra nhũng bản ghi thỏa mãn điều kiện phía bên phải mũi tên để xóa phần tử trong mảng
       // tslint:disable-next-line: triple-equals
       this.movies = this.movies.filter(eachMovie => eachMovie.id != movieId);
     });
@@ -48,11 +49,10 @@ export class MoviesComponent implements OnInit {
   ngOnInit() {
     this.getMoviesFromServices();
   }
-  // selectedMovie: Movie; //định nghĩa hàm khi con trỏ chạm vào list item
-  // onSelect(movie: Movie): void{ //event
-  //   this.selectedMovie = movie; // thuộc tính để lưu đối tượng ta select lại
-  //   console.log(this.selectedMovie);
-  //   // alert(this.selectedMovie);
-  // }
+  onSelect(movie: Movie): void { // event
+    this.selectedMovie = movie; // thuộc tính để lưu đối tượng ta select lại
+    console.log(this.selectedMovie);
+    // alert(this.selectedMovie);
+  }
 
 }

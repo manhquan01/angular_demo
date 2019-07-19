@@ -10,7 +10,7 @@ import { MovieService } from 'src/app/movie.service';
   styleUrls: ['./movie-detail.component.css']
 })
 export class MovieDetailComponent implements OnInit {
-
+  movies: Movie[];
   @Input() movie: Movie;
   constructor(
     private route: ActivatedRoute,
@@ -34,5 +34,8 @@ export class MovieDetailComponent implements OnInit {
   save(): void {
     this.movieService.updateMovie(this.movie).subscribe(() => this.goBack());
     // sau khi update xong thì quay lại list
+  }
+  delete(movieId: number): void {
+    this.movieService.deleteMovie(movieId).subscribe(_ => this.goBack() );
   }
 }

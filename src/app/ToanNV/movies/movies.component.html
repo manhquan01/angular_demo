@@ -1,54 +1,92 @@
 <h2>Phim yêu thích</h2>
 
-<div>
-  <table>
-    <tr>
-      <td>Tên Phim: </td>
-      <td>
-        <input #movieName placeholder="Tên phim">
-      </td>
-    </tr>
-    <tr>
-      <td>Năm: </td>
-      <td>
-        <input #yearMovie placeholder="Năm sx" >
-      </td>
-    </tr>
-    <tr>
-      <button (click)="add(movieName.value, yearMovie.value); movieName.value=''; yearMovie.value=''">
-        thêm
-      </button>
-    </tr>
-  </table>
+<div class="row">
+    <div class="col-xs-4">
+        <div className="panel panel-warning">
+            <div className="panel-body">
+              <form>
+                  <div class="form-group">
+                      <label>Tên phim: </label>
+                      <input class="form-control" #movieName placeholder="Tên phim">
+                      <label class="mt-5" for="">Năm sản xuất: </label>
+                      <input #yearMovie placeholder="Năm sx" class="form-control" >
+                      <div class="">
+                          <button class="btn btn-primary mt-5" (click)="add(movieName.value, yearMovie.value); movieName.value=''; yearMovie.value=''">
+                              thêm
+                          </button>
+                      </div>
+                    </div>
+              </form>
+          </div>
+        </div>
+      </div>
 </div>
-<div class="parent">
-  <ol class="movies">
-      <li class="movieListItem"
-          *ngFor="let eachMovie of movies">
-        <a routerLink="/detail/{{eachMovie.id}}">
-          {{eachMovie.name}} - {{eachMovie.year}}
-        </a>
-        <button title="xóa phim"
-                (click)="delete(eachMovie.id)">
-          Xóa
-        </button>
-      </li>
-    </ol>
-    <!-- <app-movie-detail [movie]="selectedMovie"></app-movie-detail> -->
+<div class="row parent">
+  <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th class="text-center">STT</th>
+            <th class="text-center">Tên</th>
+            <th class="text-center">Năm</th>
+            <th class="text-center">Hành động</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr  *ngFor="let eachMovie of movies">
+            <td class="text-center">
+                {{eachMovie.id}}
+            </td>
+            <td [class.selected]="eachMovie === selectedMovie"
+                (click)="onSelect(eachMovie)"> 
+                {{eachMovie.name}}
+            </td>
+            <td class="text-center"> 
+                  {{eachMovie.year}}
+            </td>
+            <td class="text-center">
+              <button title="xóa phim"
+                      class="btn btn-warning mr-15">
+
+                <a routerLink="/detail/{{eachMovie.id}}">
+                  Sửa
+                </a>
+              </button>
+              <button title="xóa phim"
+                      class="btn btn-danger"
+                      (click)="delete(eachMovie.id)">
+                Xóa
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div *ngIf="selectedMovie" class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <table class="table table-bordered table-hover">
+        <thead class="text-center">
+          <tr>
+            <td colspan="4">
+                <h4>Thông tin phim : </h4>
+            </td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>Tên Phim: </th>
+            <td colspan="3">{{selectedMovie.name}}</td>
+          </tr>
+          <tr>
+            <th>Năm :</th>
+            <td colspan="3">{{selectedMovie.year}}</td>
+            <!-- <td><input [(ngModule)]="selectedMovie.year" ></td> -->
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
-
-<!-- <h2>Phim yêu thích</h2>
-<div class="parent">
-  <ol class="movies">
-      <li class="movieListItem"
-          [class.selected]="eachMovie === selectedMovie"
-          *ngFor="let eachMovie of movies"
-          (click)="onSelect(eachMovie)"
-          routerLink="/detail/{{eachMovie.id}}"
-      >
-        {{eachMovie.name}} - {{eachMovie.year}}
-      </li>
-    </ol>
-    <app-movie-detail [movie]="selectedMovie"></app-movie-detail>
-</div> -->
-

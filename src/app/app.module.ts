@@ -25,6 +25,8 @@ import { DashboardComponent } from './ToanNV/dashboard/dashboard.component';
 import { MovieDetailComponent } from './ToanNV/movie-detail/movie-detail.component';
 import { EditEmployeeComponent } from './edit-employee/edit-employee.component';
 import { RouterModule } from '@angular/router';
+import { MovieSearchComponent } from './ToanNV/movie-search/movie-search.component';
+import { MovieInfoComponent } from './ToanNV/movie-info/movie-info.component';
 
 
 @NgModule({
@@ -43,7 +45,9 @@ import { RouterModule } from '@angular/router';
         MoviesComponent,
         MovieDetailComponent,
         DashboardComponent,
-        EditEmployeeComponent
+        EditEmployeeComponent,
+        MovieSearchComponent,
+        MovieInfoComponent
     ],
     imports: [
         BrowserModule,

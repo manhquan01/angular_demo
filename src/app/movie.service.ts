@@ -49,8 +49,18 @@ export class MovieService {
   deleteMovie(movieId: number): Observable<Movie> {
     const url = `${this.moviesURL}/${movieId}`;
     return this.http.delete<Movie>(url, httpOptions).pipe(
-      tap(_ => console.log(`deleteMovie`)),
+      tap(_ => console.log(`${movieId}`)),
       catchError(errror => of(new Movie()))
+    );
+  }
+  searchMovies(typedString: string): Observable<Movie[]> {
+   //nếu nhập mảng rỗng thì không hiện gì cả
+    if (!typedString.trim()) {
+      return of([]);
+    }
+    return this.http.get<Movie[]>(`${this.moviesURL}?name_like=${typedString}`).pipe(
+      tap(foundedMovies => console.log(`foundedMovies`)),
+      catchError(errror => of(null))
     );
   }
   constructor(
