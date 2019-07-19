@@ -11,14 +11,15 @@ import { Location } from '@angular/common';
 })
 export class EmployeeDetailComponent implements OnInit {
 
-  employee: Employee;
-  employees: Employee[];
-
   constructor(
     private employeeService: EmployeeService,
     private route: ActivatedRoute,
     private location: Location
     ) { }
+
+  employee: Employee;
+  employees: Employee[];
+  editEmployee: Employee;
 
   // get One Employee From service by id
   getEmployeeFromServiceById(): void {
@@ -33,9 +34,14 @@ export class EmployeeDetailComponent implements OnInit {
   delete(id: number): void {
     this.employeeService.delete(id).subscribe(
       _ => {
-        this.employees = this.employees.filter(employee => employee.id !== id);
+        this.location.back();
       }
     );
+  }
+
+  geInforEdit(employee: Employee): void {
+    this.editEmployee = employee;
+    // console.log(`employeeEdit = ${JSON.stringify(this.editEmployee)}`);
   }
 
   goBack() {

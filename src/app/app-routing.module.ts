@@ -11,7 +11,7 @@ import {AddUserApiComponent} from './users-api/add-user-api/add-user-api.compone
 import { MoviesComponent } from './ToanNV/movies/movies.component';
 import { DashboardComponent } from './ToanNV/dashboard/dashboard.component';
 import { MovieDetailComponent } from './ToanNV/movie-detail/movie-detail.component';
-
+import { EditEmployeeComponent } from './edit-employee/edit-employee.component';
 
 const routes: Routes = [
     { path: 'users', component: ListUserComponent },
@@ -25,10 +25,13 @@ const routes: Routes = [
     { path: 'movies', component: MoviesComponent},
     { path: 'dashboard', component: DashboardComponent},
     { path: 'detail/:id', component: MovieDetailComponent},
+    { path: 'employee/edit/:id', component: EditEmployeeComponent }
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes)],
+    imports: [
+        RouterModule.forRoot(routes)
+    ],
     exports: [RouterModule]
 })
 export class AppRoutingModule {

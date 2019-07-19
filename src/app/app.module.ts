@@ -23,6 +23,8 @@ import { MoviesComponent } from './ToanNV/movies/movies.component';
 import { MovieService } from './movie.service';
 import { DashboardComponent } from './ToanNV/dashboard/dashboard.component';
 import { MovieDetailComponent } from './ToanNV/movie-detail/movie-detail.component';
+import { EditEmployeeComponent } from './edit-employee/edit-employee.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -40,7 +42,8 @@ import { MovieDetailComponent } from './ToanNV/movie-detail/movie-detail.compone
         AddUserApiComponent,
         MoviesComponent,
         MovieDetailComponent,
-        DashboardComponent
+        DashboardComponent,
+        EditEmployeeComponent
     ],
     imports: [
         BrowserModule,
@@ -48,6 +51,7 @@ import { MovieDetailComponent } from './ToanNV/movie-detail/movie-detail.compone
         HttpClientModule,
         ReactiveFormsModule,
         FormsModule,
+        RouterModule
     ],
     providers: [
         UserService,

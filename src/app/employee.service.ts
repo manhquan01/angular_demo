@@ -40,12 +40,21 @@ export class EmployeeService {
     );
   }
 
-  // delete Employee
+  // DELETE: delete Employee
   delete(id: number): Observable<Employee> {
     const url = `${this.urlEmployee}/${id}`;
+    console.log(url);
     return this.http.delete<Employee>(url).pipe(
       tap(_ => console.log(`Delete Employee with id = ${JSON.stringify(id)}`)),
       catchError(error => of(null))
+    );
+  }
+
+  // PUT: update Employee
+  updateEmployee(employee: Employee): Observable<any> {
+    return this.http.put(`${this.urlEmployee}/${employee.id}`, employee, httpOptions).pipe(
+      tap(updatedEmployee => console.log(`Updated Employee = ${JSON.stringify(updatedEmployee)}`)),
+      catchError(() => of(new Employee()))
     );
   }
 

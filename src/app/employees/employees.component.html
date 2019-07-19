@@ -3,42 +3,34 @@
     <button onclick="showForm()"class="btn-success form-control themNhanVien" >Thêm mới nhân viên</button>
 </div>
 <div class="row hidden" id="formInsert">
-    <form [formGroup]='employeeFormGroup' novalidate class="col-xs-10 col-sm-10 col-md-10 col-lg-10 col-xs-push-1 col-sm-push-1 col-md-push-1 col-lg-push-1 ">
+    <form [formGroup]='employeeFormGroup' novalidate (ngSubmit)="onClickSubmit(employeeFormGroup.value)" class="col-xs-10 col-sm-10 col-md-10 col-lg-10 col-xs-push-1 col-sm-push-1 col-md-push-1 col-lg-push-1 ">
         <label>Tên nhân viên</label>
         <div class="form-group">
-            <input #nameEmployee type="text" class="form-control" formControlName='name' placeholder="Tên nhân viên" required>
+            <input #nameEmployee type="text" class="form-control" name="name" formControlName='name' placeholder="Tên nhân viên" required>
         </div>
         <label>Mã số nhân viên</label>
         <div class="form-group">
-            <input #idEmployee type="text" class="form-control" formControlName='id_employee' placeholder="Mã số nhân viên" required>
+            <input #idEmployee type="text" class="form-control" name="id_employee" formControlName='id_employee' placeholder="Mã số nhân viên" required>
         </div>
         <label>Team</label>
         <div class="form-group">
             <select class="form-control" formControlName='team'>
-                    <option #teamEmployee *ngFor='let team of teams' [value]='team' required>{{team}}</option>
+                    <option #teamEmployee *ngFor='let team of teams' name="team" [value]='team' required>{{team}}</option>
             </select>
-            <!-- <input #teamEmployee type="text" class="form-control" formControlName='team' placeholder="Team" required> -->
         </div>
         <label>Score</label>
         <div class="form-group">
-            <input #scoreEmployee type="text" class="form-control" formControlName='score' placeholder="Điểm số" >
+            <input #scoreEmployee type="text" class="form-control" name="score" formControlName='score' placeholder="Điểm số" >
         </div>
-        <button (click)="addNewEmployee(nameEmployee.value, teamEmployee.value, scoreEmployee.value, idEmployee.value);
-                        nameEmployee.value = ''; teamEmployee.value = ''; scoreEmployee.value = ''; idEmployee.value = '';
-                        " 
-                class="btn btn-primary btn-block"
-                [disabled]='employeeFormGroup.status == "INVALID"'
-        >
-            Thêm mới
-        </button>
+        <button class="btn btn-success btn-block" type="submit" [disabled]='employeeFormGroup.status == "INVALID"' >Thêm mới</button>
+        <button class="btn btn-primary btn-block" type="reset">Làm mời</button>
     </form>
     
 </div>
 <div class="container employee">
     <div class="row employeeRow">
         <a class="col-lg-4 oneEmployee"
-            *ngFor='let eachEmployee of employees' 
-            (click)="onSelect(eachEmployee)"
+            *ngFor='let eachEmployee of employees'
             [routerLink] ="['/employee', 'detail', eachEmployee.id]"
         >
             <p class="name">{{eachEmployee.name}}</p>
@@ -46,4 +38,3 @@
         </a>
     </div>
 </div>
-<!-- <app-employee-detail [employee]="eachEmployee"></app-employee-detail> -->
