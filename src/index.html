@@ -9,7 +9,7 @@
     <!-- App favicon -->
     <link rel="shortcut icon" href="assets/images/favicon.ico">
     <!-- App title -->
-    <title>Zircos - Responsive Admin Dashboard Template</title>
+    <title>PHP Fresher - GMO-Z-Runsystem.net</title>
     <base href="/">
     <!--Morris Chart CSS -->
     <!-- <link rel="stylesheet" href="../plugins/morris/morris.css"> -->
@@ -67,6 +67,18 @@
 <!-- App js -->
 <script src="assets/js/jquery.core.js"></script>
 <script src="assets/js/jquery.app.js"></script>
-
+<script>
+    var i = 0;
+    function showForm() {
+        ++i;
+        console.log('click');
+        var form = document.getElementById("formInsert");
+        if(i%2 != 0) {
+            form.classList.remove("hidden");
+        } else {
+            form.classList.add("hidden");
+        }
+    }
+</script>
 </body>
 </html>
