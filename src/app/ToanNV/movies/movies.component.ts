@@ -39,8 +39,8 @@ export class MoviesComponent implements OnInit {
       });
   }
   delete(movieId: number): void {
-    this.movieService.deleteMovie(movieId).subscribe(_ => { // quan sát khi anof có kết quae thì chui vào
-      // khi nào có respin thì sử dụng hàm filter lọc ra nhũng bản ghi thỏa mãn ddieuf kiện phía bên phải mũi tên để xóa phần tử trong mảng
+    this.movieService.deleteMovie(movieId).subscribe(_ => { // quan sát khi nào có kết quả thì chui vào
+      // khi nào có respon thì sử dụng hàm filter lọc ra nhũng bản ghi thỏa mãn điều kiện phía bên phải mũi tên để xóa phần tử trong mảng
       // tslint:disable-next-line: triple-equals
       this.movies = this.movies.filter(eachMovie => eachMovie.id != movieId);
     });

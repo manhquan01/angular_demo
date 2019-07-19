@@ -11,10 +11,14 @@
                       <label class="mt-5" for="">Năm sản xuất: </label>
                       <input class="form-control" [(ngModel)]="movie.year" name="year"  >
                       <div class="mt-5">
-                          <button class="btn btn-primary mr-15" (click)="save()">
-                              Lưu
-                          </button>
-                          <button class="btn btn-info " (click)="goBack()">quay lại</button>
+                        <button class="btn btn-primary mr-15" 
+                                (click)="save()"> Lưu
+                        </button>
+                        <button title="xóa phim"
+                                class="btn btn-danger mr-15"
+                                (click)="delete(movie.id)">Xóa
+                        </button>
+                        <button class="btn btn-info " (click)="goBack()">quay lại</button>
                       </div>
                     </div>
               </form>
