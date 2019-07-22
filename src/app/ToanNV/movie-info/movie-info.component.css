@@ -1,0 +1,17 @@
+.details {
+    background: bisque;
+    color: cornflowerblue;
+    padding: 0.5em;
+    margin: 1em;
+    text-align: left;
+    font-size: 0.85em;
+  }
+  .mt-5{
+    margin-top: 5px;
+  }
+  .mr-15 {
+    margin-right: 15px;
+  }
+  .parent {
+    display: right;
+  }
