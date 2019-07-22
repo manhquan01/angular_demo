@@ -1,16 +1,16 @@
 
 <div *ngIf="movie" class="row">
-    <div class="col-xs-4">
+    <div class="col-xs-4 mt-15">
         <div className="panel panel-warning">
-            <h5>Bạn đã chọn phim:</h5>  <h4>{{movie.name}}</h4>
+            <h5>Bạn đã chọn phim:</h5>  <h4>{{movie.name | uppercase }}</h4>
             <div className="panel-body">
               <form>
                   <div class="form-group">
                       <label>Tên phim: </label>
                       <input class="form-control" [(ngModel)]="movie.name" name="name" >
-                      <label class="mt-5" for="">Năm sản xuất: </label>
+                      <label class="mt-15" for="">Năm sản xuất: </label>
                       <input class="form-control" [(ngModel)]="movie.year" name="year"  >
-                      <div class="mt-5">
+                      <div class="mt-15" style="float: right;">
                         <button class="btn btn-primary mr-15" 
                                 (click)="save()"> Lưu
                         </button>
