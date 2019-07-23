@@ -9,7 +9,7 @@ import { Movie } from 'src/models/movie';
 export class MovieInfoComponent implements OnInit {
 
   @Input() movie: Movie;
-  
+
   constructor() { }
 
   ngOnInit() {
