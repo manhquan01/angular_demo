@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ListCategoriesComponent } from './list-categories.component';
+import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import {DetailCategoryComponent} from '../detail-category/detail-category.component';
+import {MessageComponent} from '../message/message.component';
 
 describe('ListCategoriesComponent', () => {
   let component: ListCategoriesComponent;
@@ -8,7 +11,7 @@ describe('ListCategoriesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ListCategoriesComponent ]
+      declarations: [ ListCategoriesComponent, DetailCategoryComponent, MessageComponent ]
     })
     .compileComponents();
   }));

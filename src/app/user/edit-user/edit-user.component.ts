@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import { ActivatedRoute} from '@angular/router';
-import { Location} from '@angular/common';
+import {Location} from '@angular/common';
 import { UserService} from '../../user.service';
 import { User} from '../../data/user';
 
@@ -27,6 +27,8 @@ export class EditUserComponent implements OnInit {
         // console.log(`${JSON.stringify(this.route.snapshot.paramMap.get('id'))}`);
         this.userService.getUserFromId(id).subscribe(user => this.user = user);
     }
+
+
 
     goBack(): void {
         this.location.back();

@@ -19,7 +19,7 @@
             <td> {{ each.name }}</td>
             <td>
                 <div style="display: inline-block">
-                    <a routerLink="/user-api/{{each.id}}">
+                    <a [routerLink]="['/user-api', each.id]">
                         <button class="btn_edit">
                             <i class="ion-edit"></i>
                         </button>

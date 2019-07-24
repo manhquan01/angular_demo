@@ -2,9 +2,24 @@
     <h4 class="page-title">{{titlePage}}</h4>
     <div class="clearfix"></div>
 </div>
-<div *ngIf="user">
-    <h3>{{ user.name | uppercase }}</h3>
-    <div>
-    <label>Id: </label>{{ user.id }}</div>
-    <button (click)="goBack()">Back</button>
-</div>
+
+<form *ngIf="user" #userForm="ngForm">
+    <p>name: {{user.name}}</p>
+    <p>email: {{user.email}}</p>
+    <div class="row">
+        <div class="form-group m-b-20 col-md-10 col-sm-12 col-xs-12">
+            <label for="exampleInputName">Name</label>
+            <input [(ngModel)]="user.name" #fullname type="text" name="name" class="form-control"
+                   id="exampleInputName" placeholder="Enter title" required="">
+        </div>
+    </div>
+
+    <div class="form-group m-b-20">
+        <label for="exampleInputEmail">Email</label>
+        <input [(ngModel)]="user.email" type="text" name="email" class="form-control"
+               id="exampleInputEmail" placeholder="Static Link">
+    </div>
+
+    <button type="button" (click)="goBack()" class="btn btn-danger waves-effect waves-light">Back</button>
+    <button type="button" id="save_post" class="btn btn-info waves-effect waves-light">Update</button>
+</form>

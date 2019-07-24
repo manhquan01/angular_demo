@@ -16,6 +16,9 @@ export class UserService {
     ) {
     }
 
+    test(): boolean {
+        return true;
+    }
     // private apiUrl = 'http://laravel.local/api/v1/user';
     private apiUrl = 'http://5d3009c328465b00146aaab8.mockapi.io/user';
 

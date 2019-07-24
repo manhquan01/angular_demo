@@ -15,10 +15,8 @@ import { HttpClientModule} from '@angular/common/http';
 import { EditUserApiComponent } from './users-api/edit-user-api/edit-user-api.component';
 import {FormsModule} from '@angular/forms';
 import { AddUserApiComponent } from './users-api/add-user-api/add-user-api.component';
-import { MoviesComponent } from './ToanNV/movies/movies.component';
-import { MovieService } from './movie.service';
-import { DashboardComponent } from './ToanNV/dashboard/dashboard.component';
-import { MovieDetailComponent } from './ToanNV/movie-detail/movie-detail.component';
+import {RouterModule} from '@angular/router';
+import { LifecycleHookComponent } from './lifecycle-hook/lifecycle-hook.component';
 
 @NgModule({
     declarations: [
@@ -31,20 +29,18 @@ import { MovieDetailComponent } from './ToanNV/movie-detail/movie-detail.compone
         ListUsersComponent,
         EditUserApiComponent,
         AddUserApiComponent,
-        MoviesComponent,
-        MovieDetailComponent,
-        DashboardComponent
+        LifecycleHookComponent,
     ],
     imports: [
         BrowserModule,
         AppRoutingModule,
         HttpClientModule,
         FormsModule,
+        RouterModule,
     ],
     providers: [
         UserService,
         MessageService,
-        MovieService,
     ],
     bootstrap: [AppComponent]
 })

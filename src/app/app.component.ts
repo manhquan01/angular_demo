@@ -7,4 +7,5 @@ import {Component} from '@angular/core';
 })
 export class AppComponent {
     titlePage = 'Angular Demo';
+    title = 'angular-demo';
 }

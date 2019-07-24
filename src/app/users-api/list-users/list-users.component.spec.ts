@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ListUsersComponent } from './list-users.component';
+import {Location, LocationStrategy} from "@angular/common";
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule} from '@angular/common/http/testing';
+
 
 describe('ListUsersComponent', () => {
   let component: ListUsersComponent;
@@ -8,7 +12,8 @@ describe('ListUsersComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ListUsersComponent ]
+      declarations: [ ListUsersComponent ],
+      imports: [RouterTestingModule, HttpClientTestingModule]
     })
     .compileComponents();
   }));
