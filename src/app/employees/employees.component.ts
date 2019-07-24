@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Injectable } from '@angular/core';
 import { EmployeeService } from '../employee.service';
 import { Employee } from '../models/employee';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
@@ -9,6 +9,7 @@ import { teams } from '../models/employee';
   templateUrl: './employees.component.html',
   styleUrls: ['./employees.component.css']
 })
+@Injectable()
 export class EmployeesComponent implements OnInit {
 
   constructor(
