@@ -11,9 +11,9 @@ describe('MovieService', () => {
   beforeEach(() =>{
     service = TestBed.get(MovieService);
   });
-  it('Movie Service should be created', () => {
-    // const service: MovieService = TestBed.get(MovieService);
-    expect(service).toBeTruthy();
-  });
+  // it('Movie Service should be created', () => {
+  //   // const service: MovieService = TestBed.get(MovieService);
+  //   expect(service).toBeTruthy();
+  // });
 
 });

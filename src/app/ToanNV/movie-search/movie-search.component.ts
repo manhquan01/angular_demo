@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { Movie } from 'src/models/movie';
+import { Movie } from 'src/app/ToanNV/models/movie';
 import { MovieService } from 'src/app/movie.service';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 

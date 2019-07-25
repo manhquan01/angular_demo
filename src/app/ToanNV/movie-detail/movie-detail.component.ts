@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Movie } from 'src/models/movie';
+import { Movie } from 'src/app/ToanNV/models/movie';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { MovieService } from 'src/app/movie.service';

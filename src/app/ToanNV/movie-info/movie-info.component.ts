@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Movie } from 'src/models/movie';
+import { Movie } from 'src/app/ToanNV/models/movie';
 
 @Component({
   selector: 'app-movie-info',

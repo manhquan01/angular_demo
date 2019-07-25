@@ -3,4 +3,4 @@ export class Movie {
   name: string;
   year: number;
 }
-//định nghĩa kiểu dữ liệu các trường cho Movie
+// định nghĩa kiểu dữ liệu các trường cho Movie

@@ -66,3 +66,13 @@
     <app-movie-info [movie]="selectedMovie"></app-movie-info>
   </div>
 </div>
+
+<div class="row mt-20 pl-20">
+  <div class="row pl-20">
+    {{cart | json}}
+  </div>
+  <div class="row pl-20">
+    <app-book [book]='book' (addToCart)='addToCart($event)'></app-book>
+    <router-outlet></router-outlet>
+  </div>
+</div>

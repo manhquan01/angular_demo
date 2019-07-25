@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Movie } from 'src/models/movie';
+import { Movie } from 'src/app/ToanNV/models/movie';
 // import { fakeMovies } from './fake-movies';
 import { Observable, of } from 'rxjs';
 import { MessageService } from './message.service';

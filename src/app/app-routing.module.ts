@@ -12,6 +12,9 @@ import { MoviesComponent } from './ToanNV/movies/movies.component';
 import { DashboardComponent } from './ToanNV/dashboard/dashboard.component';
 import { MovieDetailComponent } from './ToanNV/movie-detail/movie-detail.component';
 import { EditEmployeeComponent } from './edit-employee/edit-employee.component';
+import { BookComponent } from './ToanNV/book/book.component';
+import { BookListComponent } from './ToanNV/book-list/book-list.component';
+import { BookEditComponent } from './ToanNV/book-edit/book-edit.component';
 
 const routes: Routes = [
     { path: 'users', component: ListUserComponent },
@@ -25,9 +28,27 @@ const routes: Routes = [
     { path: 'movies', component: MoviesComponent},
     { path: 'dashboard', component: DashboardComponent},
     { path: 'detail/:id', component: MovieDetailComponent},
-    { path: 'employee/edit/:id', component: EditEmployeeComponent }
-];
+    { path: 'employee/edit/:id', component: EditEmployeeComponent },
 
+    { path: 'book/:title', component: BookComponent },
+    { path: 'book/:title/edit', component: BookEditComponent },
+    { path: 'book', component: BookListComponent },
+    {
+        path: '',
+        redirectTo: 'books/',
+        pathMatch: 'full'
+    },
+];
+// const bookRoutes: Routes = [
+//     { path: 'book/:title', component: BookComponent },
+//     { path: 'book/:title/edit', component: BookEditComponent },
+//     { path: 'book', component: BookListComponent },
+//     {
+//         path: '',
+//         redirectTo: 'books/',
+//         pathMatch: 'full'
+//     }
+//  ];
 @NgModule({
     imports: [
         RouterModule.forRoot(routes)

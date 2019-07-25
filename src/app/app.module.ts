@@ -27,7 +27,9 @@ import { EditEmployeeComponent } from './edit-employee/edit-employee.component';
 import { RouterModule } from '@angular/router';
 import { MovieSearchComponent } from './ToanNV/movie-search/movie-search.component';
 import { MovieInfoComponent } from './ToanNV/movie-info/movie-info.component';
-
+import { BookComponent } from './ToanNV/book/book.component';
+import { BookListComponent } from './ToanNV/book-list/book-list.component';
+import { BookEditComponent } from './ToanNV/book-edit/book-edit.component';
 
 @NgModule({
     declarations: [
@@ -47,7 +49,10 @@ import { MovieInfoComponent } from './ToanNV/movie-info/movie-info.component';
         DashboardComponent,
         EditEmployeeComponent,
         MovieSearchComponent,
-        MovieInfoComponent
+        MovieInfoComponent,
+        BookComponent,
+        BookListComponent,
+        BookEditComponent
     ],
     imports: [
         BrowserModule,

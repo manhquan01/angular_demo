@@ -6,5 +6,5 @@ import {Component} from '@angular/core';
     styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-    titlePage = 'Angular Demo';
+    title = 'PHP Fresher - GMO-Z-Runsystem.net';
 }
