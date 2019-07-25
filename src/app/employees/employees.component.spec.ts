@@ -1,7 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { EmployeesComponent } from './employees.component';
 import { EmployeeService } from '../employee.service';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('EmployeesComponent', () => {
   let component: EmployeesComponent;
@@ -11,7 +13,7 @@ describe('EmployeesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ ReactiveFormsModule ],
+      imports: [ FormsModule, ReactiveFormsModule, RouterTestingModule, HttpClientTestingModule ],
       providers: [ EmployeeService ],
       declarations: [ EmployeesComponent ]
   })
@@ -19,8 +21,9 @@ describe('EmployeesComponent', () => {
   }));
 
   beforeEach(() => {
+    // create an instance of EmployeesComponent
     fixture = TestBed.createComponent(EmployeesComponent);
-    component = fixture.componentInstance;
+    component = fixture.debugElement.componentInstance;
     fixture.detectChanges();
   });
 
@@ -28,13 +31,5 @@ describe('EmployeesComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  // it('#getAllEmployeeFromServer should return value from observable component', (done: DoneFn) => {
-  //   service = TestBed.get(EmployeeService);
-  //   service.getAllEmployeeFromServer().subscribe(
-  //     (value) => {
-  //       expect(value).toEqual(new Array());
-  //       done();
-  //     }
-  //   );
-  // });
+
 });

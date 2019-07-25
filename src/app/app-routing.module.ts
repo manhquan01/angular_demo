@@ -4,7 +4,7 @@ import { EmployeesComponent } from './employees/employees.component';
 import { EmployeeDetailComponent } from './employee-detail/employee-detail.component';
 import { EditEmployeeComponent } from './edit-employee/edit-employee.component';
 
-const routes: Routes = [
+export const routes: Routes = [
     { path: 'employees', component: EmployeesComponent },
     { path: 'employee/detail/:id', component: EmployeeDetailComponent },
     { path: 'employee/edit/:id', component: EditEmployeeComponent }

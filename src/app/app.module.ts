@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import { HttpClientModule} from '@angular/common/http';
+import { HttpClientModule, HttpHandler} from '@angular/common/http';
 import { EmployeesComponent } from './employees/employees.component';
 import { EmployeeService } from './employee.service';
 import { EmployeeDetailComponent } from './employee-detail/employee-detail.component';
@@ -26,7 +26,7 @@ import { RouterModule } from '@angular/router';
         HttpClientModule,
         ReactiveFormsModule,
         FormsModule,
-        RouterModule
+        RouterModule,
     ],
     providers: [
         EmployeeService

@@ -15,10 +15,6 @@ export class EmployeeService {
 
   readonly urlEmployee = 'http://5d2fdac328465b00146aa8f5.mockapi.io/sund/v1/employees';
 
-  readonly urlToTest = 'http://5d2fdac328465b00146aa8f5.mockapi.io/sund/v1';
-
-  readonly urlEmployeeTest = 'employees';
-
   compute( num: number): number {
     if (num < 0) { return 0; } else { return num + 1; }
   }
