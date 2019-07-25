@@ -4,21 +4,11 @@ import { ListUserComponent } from './list-user.component';
 import {UserService} from '../../user.service';
 import {HttpClient, HttpHandler} from '@angular/common/http';
 import {RouterTestingModule} from '@angular/router/testing';
-import {Observable, of} from 'rxjs';
 
 describe('ListUserComponent', () => {
   let component: ListUserComponent;
   let fixture: ComponentFixture<ListUserComponent>;
   let userService: UserService;
-
-  const fakeUser = {
-    get() {
-      return of([
-        {id: 1, name: 'quan'},
-        {id: 2, name: 'tuan'}
-      ]);
-    }
-  };
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -45,12 +35,5 @@ describe('ListUserComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
-  });
-
-  it('should servive callede', () => {
-
-    // spyOn(userService, 'test').and.returnValue(true);
-    expect(component.testComponent).toBeTruthy();
-    // expect(userService.test).toHaveBeenCalled();
   });
 });

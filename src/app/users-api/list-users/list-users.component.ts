@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from '../../user.service';
 import {UserApi} from '../../data/user-api';
-import {HttpClient} from '@angular/common/http';
-import {Location} from '@angular/common';
 
 @Component({
     selector: 'app-list-users',
@@ -12,12 +10,8 @@ import {Location} from '@angular/common';
 export class ListUsersComponent implements OnInit {
     titlePage = 'List Users API';
     users: UserApi[] = [];
-    data;
 
-    constructor(
-        private userService: UserService,
-        private httpClient: HttpClient,
-        private  location: Location) {
+    constructor(private userService: UserService) {
     }
 
     ngOnInit() {
@@ -36,8 +30,4 @@ export class ListUsersComponent implements OnInit {
             this.users = this.users.filter(eachUser => eachUser.id !== userId)
         });
     }
-
-    // convertData(data): void {
-    //     this.users.push(data);
-    // }
 }

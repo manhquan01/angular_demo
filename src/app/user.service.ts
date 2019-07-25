@@ -15,12 +15,8 @@ export class UserService {
         private http: HttpClient,
     ) {
     }
-
-    test(): boolean {
-        return true;
-    }
     // private apiUrl = 'http://laravel.local/api/v1/user';
-    private apiUrl = 'http://5d3009c328465b00146aaab8.mockapi.io/user';
+    public apiUrl = 'http://5d3009c328465b00146aaab8.mockapi.io/user';
 
     getUser(): Observable<User[]> {
         return of(USERS);
