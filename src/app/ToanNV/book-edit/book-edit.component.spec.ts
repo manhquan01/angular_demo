@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 
 import { BookEditComponent } from './book-edit.component';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -30,7 +30,7 @@ describe('BookEditComponent', () => {
   });
 
   afterEach(() => {
-    if(component.book) {
+    if (component.book) {
       component.book.destroy();
     }
   });
@@ -41,6 +41,8 @@ describe('BookEditComponent', () => {
     component.bookEditForm.controls['description'].setValue(description);
     component.bookEditForm.controls['price'].setValue(price);
   }
+
+
 
   it('should create', () => {
     expect(component).toBeTruthy();
@@ -54,6 +56,50 @@ describe('BookEditComponent', () => {
       price: '',
     });
   });
+
+// 5. Testing template Driven Forms
+
+  it('should have title errors if less than 3 symbols provider',
+    fakeAsync(() => {
+      component.activeForm = 'tempalteDriven';
+      fixture.detectChanges();
+      let form = component.templateForm.form;
+      tick();
+      form.setValue({
+        title2: 'test',
+        image2: 'http://test.com',
+        description2: 'none',
+        price2: '100'
+      });
+      form.controls.title2.markAllAsTouched();
+      fixture.detectChanges();
+      expect(form.controls.title2.errors).toBeTruthy();
+      expect(nativeElement.querySelector('.title-group').textContent).
+      toContain('Title must be at least 3 characters long');
+    })
+  );
+
+  it('should have price errors if incorrect value provider',
+    fakeAsync(() => {
+      component.activeForm = 'tempalteDriven';
+      fixture.detectChanges();
+      let form = component.templateForm.form;
+      tick();
+      form.setValue({
+        title2: 'test',
+        image2: 'http://test.com',
+        description2: 'none',
+        price2: '$100'
+      });
+      form.controls.title2.markAllAsTouched();
+      fixture.detectChanges();
+      expect(form.controls.title2.errors).toBeTruthy();
+      form.controls.title2.setValue('100');
+      expect(form.get('price2')).toBeTruthy();
+    })
+  );
+// Testing Reactive Form
+
   // it('should have submit button if required fields are not filled in',
   //   fakeAsync(() => {
   //     let spy = spyOn(component, 'submitReactiveForm');
@@ -64,7 +110,7 @@ describe('BookEditComponent', () => {
   //     expect(button.hasAttribute('disabled')).toBe(true);
   //   })
   // );
- 
+
   it('should have submit enabled if requied fields are filled in',
     fakeAsync(() => {
       let spy = spyOn(component, 'submitReactiveForm').and.callThrough();

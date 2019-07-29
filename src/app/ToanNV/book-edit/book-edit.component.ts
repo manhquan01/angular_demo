@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl, AbstractControl } from '@angular/forms';
+import { Component, OnInit, ViewChild, ViewChildren } from '@angular/core';
+import { FormGroup, FormBuilder, Validators, FormControl, AbstractControl, NgForm } from '@angular/forms';
 import { BookModel } from '../models/book.model';
 import { ActivatedRoute } from '@angular/router';
 
@@ -12,6 +12,12 @@ export class BookEditComponent implements OnInit {
   bookEditForm: FormGroup;
   book: BookModel;
   activeForm: string = 'reactive';
+  @ViewChild('NgForm', {static: false}) templateForm: NgForm;
+  // @ViewChild('NgForm', { static: true }) templateForm: NgForm;
+  // @ViewChild('f') form: any;
+    // @ViewChild('NgForm', { static: true }) templateForm: NgForm;
+  // @ViewChild('NgForm', { static: false }) templateForm: NgForm;
+
 
   constructor(fb: FormBuilder, private route: ActivatedRoute ) {
     this.bookEditForm = fb.group({

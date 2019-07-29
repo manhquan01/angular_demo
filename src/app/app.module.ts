@@ -30,6 +30,7 @@ import { MovieInfoComponent } from './ToanNV/movie-info/movie-info.component';
 import { BookComponent } from './ToanNV/book/book.component';
 import { BookListComponent } from './ToanNV/book-list/book-list.component';
 import { BookEditComponent } from './ToanNV/book-edit/book-edit.component';
+import { TreeComponent } from './ToanNV/tree/tree.component';
 
 @NgModule({
     declarations: [
@@ -52,7 +53,8 @@ import { BookEditComponent } from './ToanNV/book-edit/book-edit.component';
         MovieInfoComponent,
         BookComponent,
         BookListComponent,
-        BookEditComponent
+        BookEditComponent,
+        TreeComponent
     ],
     imports: [
         BrowserModule,
