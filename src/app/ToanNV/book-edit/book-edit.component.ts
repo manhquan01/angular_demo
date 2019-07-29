@@ -34,7 +34,8 @@ export class BookEditComponent implements OnInit {
       bookData.image,
       bookData.title,
       bookData.description,
-      bookData.price
+      bookData.price,
+      // bookData.upvotes,
     );
     this.book.save();
   }

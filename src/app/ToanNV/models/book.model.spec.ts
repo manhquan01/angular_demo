@@ -8,7 +8,7 @@ describe('BookModel', () => {
     let price: number;
     let upvotes: number;
 
-    let book: BookModel;
+    // let book: BookModel;
 
     beforeEach(() => {
         image = faker.image.image();
@@ -18,43 +18,46 @@ describe('BookModel', () => {
         upvotes = faker.random.number();
         // this.book = new BookModel(image, title, description, price, upvotes);
 
-        // let storage = {};
+        let storage = {};
 
-        // spyOn(window.localStorage, 'getItem').and.callFake((key: string): string => {
-        //     return storage[key] || null;
-        // });
-        // spyOn(window.localStorage, 'removeItem').and.callFake((key: string): void => {
-        //     delete storage[key];
-        // });
-        // spyOn(window.localStorage, 'setItem').and.callFake((key: string, value: string): string => {
-        //     return storage[key] = value as string;
-        // });
-        // spyOn(window.localStorage, 'clear').and.callFake(() => {
-        //     storage = {};
-        // });
+        spyOn(window.localStorage, 'getItem').and.callFake((key: string): string => {
+            return storage[key] || null;
+        });
+        spyOn(window.localStorage, 'removeItem').and.callFake((key: string): void => {
+            delete storage[key];
+        });
+        spyOn(window.localStorage, 'setItem').and.callFake((key: string, value: string): string => {
+            return storage[key] = value as string;
+        });
+        spyOn(window.localStorage, 'clear').and.callFake(() => {
+            storage = {};
+        });
     });
 
     afterEach(() => {
         localStorage.clear();
     });
 
-    // it('has the destroy method working', () => {
-    //     this.book.save();
-    //     this.book.destroy();
-    //     let bookFromStorage: BookModel = BookModel.find(this.book.title);
-    //     expect(bookFromStorage).not.toBeTruthy();
-    //     expect(bookFromStorage).toEqual(null);
+    it('has the destroy method working', () => {
+        let book = new BookModel(image, title, description, price, upvotes);
+        book.save();
+        book.destroy();
+        let bookFromStorage: BookModel = BookModel.find(book.title);
+        expect(bookFromStorage).not.toBeTruthy();
+        expect(bookFromStorage).toEqual(null);
 
-    // });
-    // it('has the find and save method working', () => {
-    //     this.book.save();
-    //     let bookFromStorage: BookModel = BookModel.find(this.book.title);
-    //     expect(this.book).toEqual(bookFromStorage);
-    // });
-    // it('has localStorage working', () => {
-    //     expect(localStorage.setItem('key', 'value')).toBe('value');
-    //     expect(localStorage.getItem('key')).toBe('value');
-    // });
+    });
+    it('has the find and save method working', () => {
+        let book = new BookModel(image, title, description, price, upvotes);
+        book.save();
+        let bookFromStorage: BookModel = BookModel.find(book.title);
+        expect(book).toEqual(bookFromStorage);
+    });
+
+    it('has localStorage working', () => {
+        expect<any>(localStorage.setItem('key', 'value')).toBe('value');
+        expect<any>(localStorage.getItem('key')).toBe('value');
+    });
 
     it(' has a valid model', () => {
         let book = new BookModel(image, title, description, price, upvotes);

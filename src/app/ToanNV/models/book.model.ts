@@ -3,7 +3,7 @@ export interface BookInterface {
     title: string,
     description: string,
     price: number,
-    upvotes: number,
+    upvotes: number
 }
 
 export class BookModel implements BookInterface {
@@ -12,7 +12,7 @@ export class BookModel implements BookInterface {
         public title: string,
         public description: string,
         public price: number,
-        public upvotes: number
+        public upvotes: number = 0
     ) { }
 
     public static query() {
