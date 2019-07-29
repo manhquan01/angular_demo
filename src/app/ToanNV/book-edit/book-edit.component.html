@@ -31,14 +31,14 @@
         </div>
     
         <div class="col-12 form-group">
-            <label for="price">Image URL</label>
-            <input formControlName='price' type='text' name='price'
-                    class='price form-control' 
-                    [ngClass]='{ "is-invalid": bookEditForm.controls["price"].touched &&
-                    bookEditForm.controls["price"].errors }'>
+            <label for="image">Image URL</label>
+            <input formControlName='image' type='text' name='image'
+                    class='image form-control' 
+                    [ngClass]='{ "is-invalid": bookEditForm.controls["image"].touched &&
+                    bookEditForm.controls["image"].errors }'>
             <div class="invalid-feedback">
-                Please provide a valid price URL !
-            </div>
+                Please provide a valid image URL !
+              </div>
         </div>
 
         <div class="col-12 form-group">

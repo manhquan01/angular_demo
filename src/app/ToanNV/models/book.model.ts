@@ -33,7 +33,7 @@ export class BookModel implements BookInterface {
     public static find(title: string) {
         let books:Array<BookModel> = JSON.parse(localStorage.getItem('books') || '[]');
         for (let book of books) {
-            if (book.title === title) {
+            if (book.title == title) {
                 return new BookModel(
                     book.image,
                     book.title,

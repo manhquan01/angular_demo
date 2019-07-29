@@ -194,17 +194,7 @@
                 <ul>
                     <li class="menu-title">Navigation</li>
                     <li>
-                        <a routerLink="users"><i class="mdi mdi-view-agenda"></i><span>User</span></a>
-                    </li>
-
-                    <li>
-                        <a routerLink="categories"><i class="mdi mdi-view-dashboard"></i><span>Categories</span></a>
-                    </li>
-                    <li>
-                        <a routerLink="users-api"><i class="mdi mdi-view-dashboard"></i><span>Users API</span></a>
-                    </li>
-                    <li>
-                        <a routerLink="employees"><i class="mdi mdi-view-dashboard"></i><span>Fresher Employees</span></a>
+                        <a routerLink="books"><i class="mdi mdi-view-dashboard"></i><span>Books</span></a>
                     </li>
                     <li>
                         <a routerLink='/movies'><i class="mdi mdi-view-dashboard"></i><span>Movies</span></a>
@@ -240,8 +230,16 @@
                 <div class="row">
                     <div class="col-xs-12">
 
-
-                        <router-outlet></router-outlet>
+                        <div class="row mt-20 pl-20">
+                            <div class="row pl-20">
+                              {{cart | json}}
+                            </div>
+                            <div class="row pl-20">
+                              <app-book [book]='book' (addToCart)='addToCart($event)'></app-book>
+                              <router-outlet></router-outlet>
+                            </div>
+                          </div>
+                          <!-- <router-outlet></!-->
 
 
                     </div>
