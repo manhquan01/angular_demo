@@ -21,7 +21,7 @@ describe('BookComponent', () => {
     component = fixture.componentInstance;
     book = new BookModel(
       faker.image.image(),
-      faker.lorem.words().join(),
+      faker.lorem.sentence(),
       faker.lorem.paragraph(),
       500.55, // faker.commerce.price(),
       0, // faker.random.number(),
@@ -71,7 +71,7 @@ describe('BookComponent', () => {
   });
 
   xit('pending', () => {
-    const any:any = jasmine.any(Number);
+    const any: any = jasmine.any(Number);
   });
 
   it('should set correct number of upvotes', () => {
