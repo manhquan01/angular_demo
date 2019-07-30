@@ -19,6 +19,7 @@ describe('ListCategoriesComponent', () => {
     fixture = TestBed.createComponent(ListCategoriesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+
   });
 
   it('should create', () => {

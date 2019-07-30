@@ -38,7 +38,9 @@ export class UserService {
     getUserApi(id: number): Observable<UserApi> {
         const URL = `${this.apiUrl + '/' + id}`;
         return this.http.get<UserApi>(URL).pipe(
-            tap(receivedUser => console.log(`receivedUser = ${JSON.stringify(receivedUser)}`)),
+            tap(
+                // receivedUser => console.log(`receivedUser = ${JSON.stringify(receivedUser)}`)
+                ),
             catchError(error => of(new UserApi()))
         );
     }

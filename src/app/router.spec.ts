@@ -15,6 +15,8 @@ import {LifecycleHookComponent} from './lifecycle-hook/lifecycle-hook.component'
 import {DetailCategoryComponent} from './Categories/detail-category/detail-category.component';
 import {MessageComponent} from "./Categories/message/message.component";
 import {HttpClient, HttpHandler} from "@angular/common/http";
+import { ReactiveFormsModule} from '@angular/forms';
+
 
 describe('Router: App', () => {
     let location: Location;
@@ -38,10 +40,11 @@ describe('Router: App', () => {
            imports: [
                RouterTestingModule.withRoutes(routes),
                FormsModule,
+               ReactiveFormsModule
            ],
            providers: [
                HttpClient,
-               HttpHandler,
+               HttpHandler
            ]
        });
 

@@ -17,6 +17,7 @@ import {FormsModule} from '@angular/forms';
 import { AddUserApiComponent } from './users-api/add-user-api/add-user-api.component';
 import {RouterModule} from '@angular/router';
 import { LifecycleHookComponent } from './lifecycle-hook/lifecycle-hook.component';
+import { ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -37,6 +38,7 @@ import { LifecycleHookComponent } from './lifecycle-hook/lifecycle-hook.componen
         HttpClientModule,
         FormsModule,
         RouterModule,
+        ReactiveFormsModule
     ],
     providers: [
         UserService,

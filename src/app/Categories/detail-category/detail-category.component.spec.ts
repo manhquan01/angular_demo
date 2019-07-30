@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DetailCategoryComponent } from './detail-category.component';
 import {MessageComponent} from '../message/message.component';
+import { CATEGORIES } from 'src/app/data/mock-categories';
 
 describe('DetailCategoryComponent', () => {
   let component: DetailCategoryComponent;
