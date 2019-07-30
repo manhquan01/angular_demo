@@ -14,7 +14,7 @@ export class MovieService {
   // getMovies(): Movie[]{
   //   return fakeMovies;
   // }
-  private moviesURL = 'http://5d2fd99228465b00146aa8d3.mockapi.io/toan/v1/movies';
+  public moviesURL = 'http://5d2fd99228465b00146aa8d3.mockapi.io/toan/v1/movies';
   // private moviesURL = 'http://localhost:3000/movies';
 
   getMovies(): Observable<Movie[]> {
