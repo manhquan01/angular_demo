@@ -45,5 +45,12 @@ describe('EmployeesComponent', () => {
     }));
   });
 
+  describe('#onClickSubmit', () => {
+    it('should call right function in component and service When click button', fakeAsync(() => {
+      tick();
+
+    }));
+  });
+
 
 });

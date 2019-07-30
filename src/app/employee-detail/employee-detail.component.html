@@ -2,7 +2,7 @@
 <h1 style="text-align: center;">Thông tin nhân viên</h1>
 <br>
 <div class="col-lg-3" style="float: left; margin-top: -68px;">
-        <button (click)="goBack();" class="btn-success form-control" >Quay lại</button>
+        <button (click)="goBack();" class="btn-success form-control goBack" >Quay lại</button>
 </div>
 <table class="table table-striped table-bordered table-hover">
     <thead>
@@ -22,7 +22,7 @@
             <td>{{employee.team}}</td>
             <td>{{employee.score}}</td>
             <!-- <td class="center"><i class="fa fa-pencil fa-fw"></i> <a routerLink="/employee/edit/{{employee.id}}" >Edit</a></td> -->
-            <td class="center"><i class="fa fa-pencil fa-fw"></i> <a (click)="geInforEdit(employee)" >Edit</a></td>            
+            <td class="center"><i class="fa fa-pencil fa-fw"></i> <a (click)="getInforEdit(employee)" class="edit" style="cursor: pointer;" >Edit</a></td>            
             <td (click)="delete(employee.id);" class="delete" style="cursor: pointer;"><i class="fa fa-trash-o  fa-fw"></i><a >Delete</a></td>
         </tr>       
     </tbody>

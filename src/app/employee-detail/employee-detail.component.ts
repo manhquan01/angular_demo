@@ -39,7 +39,7 @@ export class EmployeeDetailComponent implements OnInit {
     );
   }
 
-  geInforEdit(employee: Employee): void {
+  getInforEdit(employee: Employee): void {
     this.editEmployee = employee;
     // console.log(`employeeEdit = ${JSON.stringify(this.editEmployee)}`);
   }
