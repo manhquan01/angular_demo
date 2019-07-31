@@ -8,7 +8,6 @@ import { Observable, of } from 'rxjs';
 import { UserApi } from 'src/app/data/user-api';
 import { UserService } from 'src/app/user.service';
 import { By } from '@angular/platform-browser';
-import { USERSAPI } from 'src/app/data/mock-users';
 import { ReactiveFormsModule} from '@angular/forms';
 
 class DataStub {
@@ -86,4 +85,43 @@ describe('AddUserApiComponent', () => {
     expect(errors['maxlength']).toBeFalsy();
 
   })
+
+  it('email field validity', () => {
+    let email = component.formAddUser.controls['email'];
+    expect(email.valid).toBeTruthy();
+  });
+
+  it('phone field validity', () => {
+    let phone = component.formAddUser.controls['phone_number'];
+    expect(phone.valid).toBeTruthy();
+  });
+
+  it('submitting a form', () => {
+    expect(component.formAddUser.valid).not.toBeTruthy();
+
+    component.formAddUser.controls['name'].setValue('manhquan');
+    component.formAddUser.controls['email'].setValue('manhquan1908@gmail.com');
+    component.formAddUser.controls['phone_number'].setValue('123456789');
+
+    expect(component.formAddUser.valid).toBeTruthy();
+    let newUser: UserApi;
+
+    const user: UserApi = new UserApi();
+    user.name = component.formAddUser.value.name;
+    user.email = component.formAddUser.value.email;
+    user.phoneNumber = component.formAddUser.value.phone_number;
+
+    spyOn(component, 'addUser').and.callThrough();
+    fixture.debugElement.query(By.css('form')).triggerEventHandler('ngSubmit', null);
+
+    spyOn(userService, 'addUserApi').and.callThrough();
+
+    userService.addUserApi(user).subscribe((value) => newUser = value);
+
+    expect(newUser.name).toEqual('manhquan');
+    expect(newUser.email).toEqual('manhquan1908@gmail.com');
+    expect(newUser.phoneNumber).toEqual('123456789');
+    expect(userService.addUserApi).toHaveBeenCalled();
+    expect(component.addUser).toHaveBeenCalled();
+  });
 });

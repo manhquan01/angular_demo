@@ -30,13 +30,18 @@ export class AddUserApiComponent implements OnInit {
         });
     }
 
-    addUser(newUser: UserApi): void {
-        this.userService.addUserApi(newUser).subscribe();
-    }
+    addUser(): void {
+        if(this.formAddUser.valid){
+            const user: UserApi = new UserApi();
+            user.name = this.formAddUser.value.name;
+            user.email = this.formAddUser.value.email;
+            user.phoneNumber = this.formAddUser.value.phone_number;
 
+            this.userService.addUserApi(user).subscribe();
+        }
+    }
 
     goBack(): void {
         this.location.back();
     }
-
 }

@@ -5,15 +5,14 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 import { UserService } from 'src/app/user.service';
 import { Observable, of } from 'rxjs';
-import { USERSAPI } from 'src/app/data/mock-users';
-import { User } from 'src/app/data/user';
+import { USERSAPI, USERFAKE } from 'src/app/data/mock-users';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { UserApi } from 'src/app/data/user-api';
 
 class DataStub {
   getUsersFromApi(): Observable<UserApi[]> {
-    return of(USERSAPI);
+    return of(USERFAKE);
   }
 
   deleteUserApi(user: number): Observable<any> {
@@ -81,12 +80,12 @@ describe('ListUserComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
     userService = TestBed.get(UserService);
-    // dataStub = fixture.debugElement.injector.get(UserService);
   });
 
   it('should show list users & delete button called !', fakeAsync(() => {
     const bannerDe: DebugElement = fixture.debugElement;
     spyOn(userService, 'getUsersFromApi').and.returnValue(of(USERSAPI));
+    component.ngOnInit();
     expect(component.users).toEqual(USERSAPI);
     expect(bannerDe.query(By.css('table tbody')).nativeElement).not.toBeNull();
     expect(bannerDe.query(By.css('.btn_delete')).nativeElement).not.toBeNull();

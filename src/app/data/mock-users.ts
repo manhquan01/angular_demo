@@ -10,3 +10,8 @@ export const USERSAPI: UserApi[] = [
     {id: 1, name: "quan", email: "quan@gmail.com", phoneNumber: '123456789'},
     {id: 2, name: "quan2", email: "quan2@gmail.com", phoneNumber: '987654321'}
 ];
+
+export const USERFAKE: UserApi[] = [
+    {id: 1, name: "su", email: "su@gmail.com", phoneNumber: '123456789'},
+    {id: 2, name: "toan", email: "toan@gmail.com", phoneNumber: '987654321'}
+]

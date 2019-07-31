@@ -2,32 +2,50 @@
     <h4 class="page-title">{{titlePage}}</h4>
     <div class="clearfix"></div>
 </div>
-
-<form *ngIf="user">
-    <p>name: {{user.name}}</p>
-    <p>email: {{user.email}}</p>
-    <p>phone: {{user.phone_number}}</p>
-    <div class="row">
-        <div class="form-group m-b-20 col-md-10 col-sm-12 col-xs-12">
+<div *ngIf="user">
+    <form [formGroup] = "formEditUser" (ngSubmit)="save()">
+        
+        <div class="form-group m-b-20 ">
             <label for="exampleInputName">Name</label>
-            <input [(ngModel)]="user.name" type="text" name="name" class="form-control"
-                   id="exampleInputName" placeholder="Enter title" required="">
+            <input formControlName='name'
+            type="text"
+            name="name"
+            class="form-control"
+            id="exampleInputName"
+            placeholder="Enter title"
+            required=""
+            value="{{user.name}}">
         </div>
-    </div>
+        
+    
+        <div class="form-group m-b-20">
+            <label for="exampleInputEmail">Email</label>
+            <input formControlName='email'
+            type="text"
+            name="email"
+            class="form-control"
+            id="exampleInputEmail"
+            placeholder="Static Link"
+            value="{{user.email}}">
+        </div>
+    
+        <div class="form-group m-b-20">
+            <label for="exampleInputPhone">Phone Number</label>
+            <input formControlName='phone_number'
+            type="text"
+            name="phone"
+            class="form-control"
+            id="exampleInputPhone"
+            placeholder="Static Link"
+            value="{{user.phoneNumber}}">
+        </div>
+    
+        <button type="button"
+        (click)="goBack()"
+        class="btn btn-danger waves-effect waves-light">Back</button>
+        <button type="submit"
+        id="save_post"
+        class="btn btn-info waves-effect waves-light">Update</button>
+    </form>
+</div>
 
-    <div class="form-group m-b-20">
-        <label for="exampleInputEmail">Email</label>
-        <input [(ngModel)]="user.email" type="text" name="email" class="form-control"
-               id="exampleInputEmail" placeholder="Static Link">
-    </div>
-
-    <div class="form-group m-b-20">
-        <label for="exampleInputPhone">Phone Number</label>
-        <input [(ngModel)]="user.phone_number" type="text" name="phone" class="form-control"
-               id="exampleInputPhone" placeholder="Static Link">
-    </div>
-
-    <button type="button" (click)="goBack()" class="btn btn-danger waves-effect waves-light">Back</button>
-    <button type="button" (click)="save()" id="save_post" class="btn btn-info waves-effect waves-light">Update</button>
-    <!--<input type="hidden" name="_token" value="rS3X85YYX1Dvr2l9d5uzCvh72MzanSGReVtUvMOr">-->
-</form>

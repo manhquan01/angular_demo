@@ -3,6 +3,7 @@ import {ActivatedRoute} from '@angular/router';
 import {UserService} from '../../user.service';
 import {Location} from '@angular/common';
 import {UserApi} from '../../data/user-api';
+import { FormGroup, FormControl, Validator, Validators} from '@angular/forms'
 
 @Component({
     selector: 'app-edit-user-api',
@@ -12,7 +13,8 @@ import {UserApi} from '../../data/user-api';
 export class EditUserApiComponent implements OnInit {
 
     titlePage = 'Edit User';
-    @Input() user: UserApi;
+    user: UserApi;
+    formEditUser;
     constructor(
         private route: ActivatedRoute,
         private userService: UserService,
@@ -21,6 +23,15 @@ export class EditUserApiComponent implements OnInit {
 
     ngOnInit() {
         this.getIdUser();
+        this.formEditUser = new FormGroup({
+            name: new FormControl('', Validators.compose([
+                Validators.required,
+                Validators.minLength(3),
+                Validators.maxLength(20)
+            ])),
+            email: new FormControl(),
+            phone_number: new FormControl(),
+        });
     }
 
     getIdUser(): void {
