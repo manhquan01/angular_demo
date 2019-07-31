@@ -60,7 +60,7 @@ describe('DashboardComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should getMovieFromService() called', () => {
+  it('should getMovies() called', () => {
     spyOn(movieService, 'getMovies').and.callThrough();
     component.ngOnInit();
     expect(component.getMovies).toBeTruthy();

@@ -64,7 +64,7 @@ describe('Router: App', () => {
             expect(location.path()).toBe('/movies');
         });
     }));
-    
+
     it('should redirect to "/dashboard"', fakeAsync(() => {
         router.navigate(['/dashboard']).then(() => {
             tick();

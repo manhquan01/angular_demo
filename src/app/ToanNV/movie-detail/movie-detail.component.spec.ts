@@ -116,7 +116,7 @@ describe('MovieDetailComponent', () => {
     }));
   });
 
-  describe ('#get movie from service by id', () => {
+  describe ('#getMovieFromRoute() service by id', () => {
     it('call right function in service', fakeAsync(() => {
       tick();
       spyOn(component, 'getMovieFromRoute').and.callThrough();
