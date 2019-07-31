@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Movie } from 'src/models/movie';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { MovieService } from 'src/app/movie.service';
+import { MovieService } from '../../movie.service';
 
 @Component({
   selector: 'app-movie-detail',
@@ -13,10 +13,12 @@ export class MovieDetailComponent implements OnInit {
   movies: Movie[];
   @Input() movie: Movie;
   constructor(
+    public movieService: MovieService,
     private route: ActivatedRoute,
-    private movieService: MovieService,
     private location: Location
   ) { }
+
+  editMovie: Movie;
 
   ngOnInit() {
     this.getMovieFromRoute();

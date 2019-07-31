@@ -15,6 +15,7 @@ export class MoviesComponent implements OnInit {
   }
   // movies = fakeMovies;
   movies: Movie[];
+
   selectedMovie: Movie; // định nghĩa hàm khi con trỏ chạm vào list item
   getMoviesFromServices(): void { // lấy dữ liệu từ service đổ vào mảng movies
     // this.movies = this.movieService.getMovies();

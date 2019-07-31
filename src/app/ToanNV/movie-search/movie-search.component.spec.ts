@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MovieSearchComponent } from './movie-search.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { MovieService } from 'src/app/movie.service';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('MovieSearchComponent', () => {
   let component: MovieSearchComponent;
@@ -8,7 +11,9 @@ describe('MovieSearchComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MovieSearchComponent ]
+      declarations: [ MovieSearchComponent ],
+      imports: [RouterTestingModule, HttpClientTestingModule],
+      providers: [MovieService]
     })
     .compileComponents();
   }));
@@ -19,7 +24,7 @@ describe('MovieSearchComponent', () => {
     fixture.detectChanges();
   });
 
-  // it('should create', () => {
-  //   expect(component).toBeTruthy();
-  // });
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
 });

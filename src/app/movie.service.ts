@@ -30,7 +30,7 @@ export class MovieService {
     // return of(fakeMovies.find(movie => movie.id === id));
     const url = `${this.moviesURL}/${id}`;
     return this.http.get<Movie>(url).pipe(
-      tap(selectedMovie => console.log(`selectedMovie`)),
+      tap(selectedMovie => console.log(`selectedMovie=${JSON.stringify(selectedMovie)}`)),
       catchError(errror => of(new Movie()))
     );
   }

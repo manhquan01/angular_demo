@@ -11,7 +11,7 @@
                           <label class="mt-5" for="">Năm sản xuất: </label>
                           <input #yearMovie placeholder="Năm sx" class="form-control" >
                           <div class="">
-                              <button style="float: right;" class="btn btn-primary mt-15" (click)="add(movieName.value, yearMovie.value); movieName.value=''; yearMovie.value=''">
+                              <button style="float: right;" class="btn btn-primary mt-15 btnAdd" (click)="add(movieName.value, yearMovie.value); movieName.value=''; yearMovie.value=''">
                                   Thêm
                               </button>
                           </div>
@@ -47,13 +47,13 @@
               </td>
               <td class="text-center">
                 <button title="xóa phim"
-                        class="btn btn-warning mr-15">
+                        class="btn btn-warning mr-15 btnEdit">
                   <a routerLink="/detail/{{eachMovie.id}}">
                     Sửa
                   </a>
                 </button>
                 <button title="xóa phim"
-                        class="btn btn-danger"
+                        class="btn btn-danger btnDelete"
                         (click)="delete(eachMovie.id)">
                   Xóa
                 </button> 
