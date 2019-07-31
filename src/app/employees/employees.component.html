@@ -4,7 +4,7 @@
 </div>
 <div class="row hidden" id="formInsert">
     <form [formGroup]='employeeFormGroup' novalidate (ngSubmit)="onClickSubmit(employeeFormGroup.value)" 
-        class="col-xs-10 col-sm-10 col-md-10 col-lg-10 col-xs-push-1 col-sm-push-1 col-md-push-1 col-lg-push-1 ">
+        class="col-xs-10 col-sm-10 col-md-10 col-lg-10 col-xs-push-1 col-sm-push-1 col-md-push-1 col-lg-push-1 formSubmit">
         <label>Tên nhân viên</label>
         <div class="form-group">
             <input #nameEmployee type="text" class="form-control" name="name" formControlName='name' 
@@ -26,7 +26,7 @@
             <input #scoreEmployee type="text" class="form-control" name="score" formControlName='score' 
             placeholder="Điểm số" >
         </div>
-        <button class="btn btn-success btn-block" type="submit" 
+        <button class="btn btn-success btn-block addNewEmployee" type="submit" 
             [disabled]='employeeFormGroup.status == "INVALID"' >Thêm mới
         </button>
         <button class="btn btn-primary btn-block" type="reset">Làm mời</button>

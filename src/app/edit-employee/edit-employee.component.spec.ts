@@ -8,10 +8,8 @@ import { EmployeeService } from '../employee.service';
 import { FakeEmployeeService } from '../fakeEmployeeService';
 import { By } from '@angular/platform-browser';
 import { Employee } from '../models/employee';
-import { EmployeeDetailComponent } from '../employee-detail/employee-detail.component';
-import { of } from 'rxjs';
 
-export const mock =
+const mock =
 {
   id: 2,
   name: 'Nguyen Hien',
@@ -24,13 +22,11 @@ describe('EditEmployeeComponent', () => {
   let component: EditEmployeeComponent;
   let fixture: ComponentFixture<EditEmployeeComponent>;
 
-  let employeeDetailComponent: EmployeeDetailComponent;
-  let fixtureEmployeeDetail: ComponentFixture<EmployeeDetailComponent>;
   let service: EmployeeService;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EditEmployeeComponent, EmployeeDetailComponent ],
+      declarations: [ EditEmployeeComponent ],
       imports: [ FormsModule, HttpClientTestingModule, RouterTestingModule],
       providers: [
         {
@@ -47,10 +43,6 @@ describe('EditEmployeeComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
 
-    fixtureEmployeeDetail = TestBed.createComponent(EmployeeDetailComponent);
-    employeeDetailComponent = fixtureEmployeeDetail.componentInstance;
-    fixtureEmployeeDetail.detectChanges();
-
     service = TestBed.get(EmployeeService);
   });
 
@@ -61,14 +53,12 @@ describe('EditEmployeeComponent', () => {
   describe('#saveUpdate', () => {
     it('should have button update when recived data', fakeAsync(() => {
       tick();
-      // component.employee = mock;
-      fixtureEmployeeDetail.detectChanges();
-      // let input = fixtureEmployeeDetail.nativeElement.querySelector('app-edit-employee').irnneText;
-      // let input = fixtureEmployeeDetail.debugElement.query(By.directive(Employee));
-      // input = mock;
-      // component.employee = input;
-      employeeDetailComponent.editEmployee = mock;
-      fixtureEmployeeDetail.detectChanges();
+      // mock @Input employee = fakeEmployee = mock
+      // tslint:disable-next-line: prefer-const
+      let fakeEmployee: Employee = new Employee();
+      fakeEmployee = mock;
+      component.employee = fakeEmployee;
+      fixture.detectChanges();
       const btnUpdate = fixture.debugElement.query(By.css('.update'));
       expect(btnUpdate).not.toBeNull();
     }));
@@ -77,6 +67,18 @@ describe('EditEmployeeComponent', () => {
       tick();
       spyOn(component, 'saveUpdate').and.callThrough();
       spyOn(service, 'updateEmployee').and.callThrough();
+      // mock @Input employee = fakeEmployee = mock
+      // tslint:disable-next-line: prefer-const
+      let fakeEmployee: Employee = new Employee();
+      fakeEmployee.id_employee = mock.id_employee;
+      fakeEmployee.name = mock.name;
+      fakeEmployee.score = mock.score;
+      fakeEmployee.team = mock.team;
+      component.employee = fakeEmployee;
+      fixture.detectChanges();
+      fixture.debugElement.query(By.css('.update')).triggerEventHandler('click', null);
+      expect(component.saveUpdate).toHaveBeenCalled();
+      expect(service.updateEmployee).toHaveBeenCalledWith(fakeEmployee);
     }));
   });
 });
