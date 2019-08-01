@@ -68,13 +68,13 @@ describe('EmployeeDetailComponent', () => {
       expect(btnDelete).not.toBeNull();
     }));
 
-    it('should call right function in service', fakeAsync(() => {
+    it('should call right function in component and service when click button delete', fakeAsync(() => {
       tick();
       spyOn(component, 'delete').and.callThrough();
       spyOn(service, 'delete').and.callThrough();
       spyOn(service, 'getEmployeeFromServerById').and.returnValue(of(mock));
       component.ngOnInit();
-      fixture.debugElement.query(By.css('.delete')).triggerEventHandler('click', mock.id);
+      fixture.debugElement.query(By.css('.delete')).triggerEventHandler('click', null);
       expect(component.delete).toHaveBeenCalled();
       expect(service.delete).toHaveBeenCalledWith(mock.id);
     }));

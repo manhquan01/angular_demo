@@ -1,15 +1,25 @@
 <div *ngIf = "employee" class="row" id="formInsert">
-    <form class="col-xs-10 col-sm-10 col-md-10 col-lg-10 col-xs-push-1 col-sm-push-1 col-md-push-1 col-lg-push-1 ">
-        <label>Tên nhân viên</label>
+    <form #employeeForm="ngForm" class="col-xs-10 col-sm-10 col-md-10 col-lg-10 col-xs-push-1 col-sm-push-1 col-md-push-1 col-lg-push-1 ">
         <div class="form-group">
-            <input [(ngModel)]="employee.name" name="name" type="text" class="form-control"  placeholder="Tên nhân viên" required>
+            <label>Tên nhân viên</label>
+            <div class="form-group">
+                <input [(ngModel)]="employee.name" #employeeName="ngModel" name="name" type="text" class="form-control"  placeholder="Tên nhân viên" required>
+            </div>
+            <div class="alert alert-danger" [hidden]="employeeName.valid || employeeName.pristine">
+                Không được để trống tên nhân viên
+            </div>
         </div>
-        <label>Mã số nhân viên</label>
         <div class="form-group">
-            <input [(ngModel)]="employee.id_employee" name="id_employee"  class="form-control"  placeholder="Mã số nhân viên" required>
+            <label>Mã số nhân viên</label>
+            <div class="form-group">
+                <input [(ngModel)]="employee.id_employee" #employeeID="ngModel" name="id_employee"  class="form-control"  placeholder="Mã số nhân viên" required>
+            </div>
+            <div class="alert alert-danger" [hidden]="employeeID.valid || employeeID.pristine" >
+                Không được để trống mã số nhân viên
+            </div> 
         </div>
-        <label>Team</label>
         <div class="form-group">
+            <label>Team</label>
             <select class="form-control" [(ngModel)]="employee.team" name="teams" >
                     <option id="teamEmployee" *ngFor='let team of teams' [ngValue]="team" required
                             [selected]="team == employee.team"
@@ -18,16 +28,16 @@
                     </option>
             </select>
         </div>
-        <label>Score</label>
         <div class="form-group">
+            <label>Score</label>
             <input [(ngModel)]="employee.score" name="score" type="text" type="text" class="form-control" placeholder="Điểm số" >
         </div>
         <button
                 class="btn btn-primary btn-block update"
                 (click)="saveUpdate()"
+                [disabled] = "employeeForm.invalid"
                 >
             Update
         </button>
     </form>
-    
 </div>

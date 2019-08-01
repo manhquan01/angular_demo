@@ -128,10 +128,6 @@ describe('EmployeeService', () => {
     });
   });
 
-  it('should return 0 if input is negative', () => {
-    service = TestBed.get(EmployeeService);
-    expect(service.compute(-1)).toEqual(0);
-  });
   afterEach(() => {
     httpTestingController.verify();
   });

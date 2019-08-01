@@ -51,6 +51,11 @@ describe('EditEmployeeComponent', () => {
   });
 
   describe('#saveUpdate', () => {
+    it('should have not button when do not recive data', () => {
+      const btnUpdate = fixture.debugElement.query(By.css('.update'));
+      expect(btnUpdate).toBeNull();
+    });
+
     it('should have button update when recived data', fakeAsync(() => {
       tick();
       // mock @Input employee = fakeEmployee = mock
@@ -78,6 +83,8 @@ describe('EditEmployeeComponent', () => {
       fixture.detectChanges();
       fixture.debugElement.query(By.css('.update')).triggerEventHandler('click', null);
       expect(component.saveUpdate).toHaveBeenCalled();
+      // vì function updateEmployee(employee: Employee) có tham số là 1 employee
+      // nên cần tạo một fakeEmployee có kiểu dữ liệu là 1 Employee để expect
       expect(service.updateEmployee).toHaveBeenCalledWith(fakeEmployee);
     }));
   });
