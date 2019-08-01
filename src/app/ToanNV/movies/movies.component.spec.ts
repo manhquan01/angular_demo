@@ -20,63 +20,64 @@ export const mock: Movie[] =[
   { id: 2, name: 'Queen', year: 2005}
 ];
 
-describe('MoviesComponent', () => {
-  let component: MoviesComponent;
-  let fixture: ComponentFixture<MoviesComponent>;
-  let nativeElement: HTMLElement;
+// describe('MoviesComponent', () => {
+//   let component: MoviesComponent;
+//   let fixture: ComponentFixture<MoviesComponent>;
+//   let nativeElement: HTMLElement;
 
 
-  let componentInfoComponent: MovieInfoComponent;
-  let fixtureMovieInfo: ComponentFixture<MovieInfoComponent>;
+//   let componentInfoComponent: MovieInfoComponent;
+//   let fixtureMovieInfo: ComponentFixture<MovieInfoComponent>;
 
-  let movieService: MovieService;
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ MoviesComponent, MovieInfoComponent ],
-      // providers: [
-      //   {
-      //     provide: MovieService,
-      //     useClass: FakeMovieService
-      //   }
-      // ],
-      providers: [MovieService],
+//   let movieService: MovieService;
+//   beforeEach(async(() => {
+//     TestBed.configureTestingModule({
+//       declarations: [ MoviesComponent, MovieInfoComponent ],
+//       // providers: [
+//       //   {
+//       //     provide: MovieService,
+//       //     useClass: FakeMovieService
+//       //   }
+//       // ],
+//       providers: [MovieService],
 
-      imports: [RouterTestingModule, HttpClientTestingModule],
-    })
-    .compileComponents();
-  }));
+//       imports: [RouterTestingModule, HttpClientTestingModule],
+//     })
+//     .compileComponents();
+//   }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(MoviesComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+//   beforeEach(() => {
+//     fixture = TestBed.createComponent(MoviesComponent);
+//     component = fixture.componentInstance;
+//     fixture.detectChanges();
 
-    fixtureMovieInfo = TestBed.createComponent(MovieInfoComponent);
-    componentInfoComponent = fixtureMovieInfo.componentInstance;
-    fixtureMovieInfo.detectChanges();
-    nativeElement = fixture.nativeElement;
+//     fixtureMovieInfo = TestBed.createComponent(MovieInfoComponent);
+//     componentInfoComponent = fixtureMovieInfo.componentInstance;
+//     fixtureMovieInfo.detectChanges();
+//     nativeElement = fixture.nativeElement;
 
-    movieService = TestBed.get(MovieService);
-  });
+//     movieService = TestBed.get(MovieService);
+//   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-  it('should call to a function add when clicked', () => {
-    let spy = spyOn(component, 'add');
-    let button = nativeElement.querySelector('button.btnAdd');
-    button.dispatchEvent(new Event('click'));
-    expect(spy).toHaveBeenCalled();
-  });
+//   it('should create', () => {
+//     expect(component).toBeTruthy();
+//   });
+//   it('should call to a function add when clicked', () => {
+//     let spy = spyOn(component, 'add');
+//     let button = nativeElement.querySelector('button.btnAdd');
+//     button.dispatchEvent(new Event('click'));
+//     expect(spy).toHaveBeenCalled();
+//   });
 
-  it('should getMovieFromService() called', () => {
-    spyOn(movieService, 'getMovies').and.callThrough();
-    component.ngOnInit();
-    expect(component.getMoviesFromServices).toBeTruthy();
-    expect(movieService.getMovies).toHaveBeenCalled();
-    expect(component.getMoviesFromServices).toBeTruthy();
-  });
-});
+//   it('should getMovieFromService() called', () => {
+//     spyOn(movieService, 'getMovies').and.callThrough();
+//     component.ngOnInit();
+//     expect(component.getMoviesFromServices).toBeTruthy();
+//     expect(movieService.getMovies).toHaveBeenCalled();
+//     expect(component.getMoviesFromServices).toBeTruthy();
+//   });
+// });
+
 export const fakeMovie: Movie[] =[
   { id: 1, name: 'King', year: 1995},
   { id: 2, name: 'Queen', year: 2005}
@@ -166,4 +167,11 @@ describe('ListMovieComponent#2', () => {
     onSelect.query(By.css('.onSelect')).nativeElement.click();
     expect(component.onSelect).toHaveBeenCalledWith(fakeMovie[0]);
   }));
+  // it ('should use the movie name from the service', () => {
+  //   // let fixture = TestBed.createComponent(MoviesComponent);
+  //   // let component = fixture.debugElement.componentInstance;
+  //   // let movieService = fixture.debugElement.injector.get(MovieService);
+  //   fixture.detectChanges();
+  //   expect(movieService.getMovies).toEqual(component.movies);
+  // });
 });

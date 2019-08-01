@@ -16,7 +16,9 @@ export class MovieService {
   // }
   public moviesURL = 'http://5d2fd99228465b00146aa8d3.mockapi.io/toan/v1/movies';
   // private moviesURL = 'http://localhost:3000/movies';
-
+  compute( num: number): number {
+    if (num < 0) { return 0; } else { return num + 1; }
+  }
   getMovies(): Observable<Movie[]> {
     // lấy thời điểm hiện tại ngày tháng
     // this.messageService.add(`${ new Date().toLocaleString()}. Get movie list`);

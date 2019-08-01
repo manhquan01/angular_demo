@@ -27,6 +27,8 @@ import { EditEmployeeComponent } from './edit-employee/edit-employee.component';
 import { RouterModule } from '@angular/router';
 import { MovieSearchComponent } from './ToanNV/movie-search/movie-search.component';
 import { MovieInfoComponent } from './ToanNV/movie-info/movie-info.component';
+import { HoverfocusDirective } from './ToanNV/hoverfocus.directive';
+
 
 
 @NgModule({
@@ -47,7 +49,8 @@ import { MovieInfoComponent } from './ToanNV/movie-info/movie-info.component';
         DashboardComponent,
         EditEmployeeComponent,
         MovieSearchComponent,
-        MovieInfoComponent
+        MovieInfoComponent,
+        HoverfocusDirective
     ],
     imports: [
         BrowserModule,

@@ -1,8 +1,10 @@
-import {TestBed, async} from '@angular/core/testing';
+import {TestBed, async, ComponentFixture} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {AppComponent} from './app.component';
 
 describe('AppComponent', () => {
+    let component: AppComponent;
+    let fixture: ComponentFixture<AppComponent>;
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             imports: [
@@ -13,7 +15,11 @@ describe('AppComponent', () => {
             ],
         }).compileComponents();
     }));
-
+    beforeEach(() => {
+        fixture = TestBed.createComponent(AppComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+      });
     it('should create the app', () => {
         const fixture = TestBed.createComponent(AppComponent);
         const app = fixture.debugElement.componentInstance;
@@ -32,4 +38,10 @@ describe('AppComponent', () => {
         const compiled = fixture.debugElement.nativeElement;
         expect(compiled.querySelector('.topbar-left').textContent).toContain('PHPFresher');
     });
+
+    // it(`should render directive in a class title-header > h1 'PHP Fresher GMO'`, () => {
+    //     const fixture = TestBed.createComponent(AppComponent);
+    //     const compiled = fixture.debugElement.nativeElement;
+    //     expect(compiled.querySelector('h6').textContent).toContain('PHP Fresher GMO');
+    // });
 });

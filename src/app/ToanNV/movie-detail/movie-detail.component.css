@@ -16,3 +16,6 @@
 .mt-15 {
   margin-top: 15px;
 }
+input.ng-invalid.ngtouched {
+  border: 1px solid red;
+}

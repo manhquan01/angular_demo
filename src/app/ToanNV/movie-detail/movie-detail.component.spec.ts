@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
-
+// import 'jasmine';
 import { MovieDetailComponent } from './movie-detail.component';
 import { FormsModule } from '@angular/forms';
 import { MovieService } from 'src/app/movie.service';
@@ -38,6 +38,8 @@ describe('MovieDetailComponent', () => {
   let fixture: ComponentFixture<MovieDetailComponent>;
   let service: MovieService;
   let debugElement: DebugElement;
+  let submitEl: DebugElement;
+
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -75,6 +77,16 @@ describe('MovieDetailComponent', () => {
   });
 
   describe('#Save Edit()', () => {
+    it('test input', fakeAsync(() => {
+      tick();
+      let fakeMovies: Movie = new Movie();
+      fakeMovies = mock;
+      component.movie = fakeMovies;
+      fixture.detectChanges();
+      const btnSave = fixture.debugElement.query(By.css('.save'));
+      expect(btnSave).not.toBeNull();
+    }));
+
     it('have btn Save when recived data', fakeAsync(() => {
       tick();
       spyOn(service, 'getMovieFromId').and.returnValue(of(mock));
@@ -93,6 +105,20 @@ describe('MovieDetailComponent', () => {
       expect(component.save).toHaveBeenCalled();
       expect(service.updateMovie).toHaveBeenCalledWith(mock);
 
+    }));
+    it('should call right function in component and service', fakeAsync(() => {
+      tick();
+      spyOn(component, 'save').and.callThrough();
+      spyOn(service, 'updateMovie').and.callThrough();
+      let fakeMovie: Movie = new Movie();
+      fakeMovie.id = mock.id;
+      fakeMovie.name = mock.name;
+      fakeMovie.year = mock.year;
+      component.movie = fakeMovie;
+      fixture.detectChanges();
+      fixture.debugElement.query(By.css('.save')).triggerEventHandler('click', null);
+      expect(component.save).toHaveBeenCalled();
+      expect(service.updateMovie).toHaveBeenCalledWith(fakeMovie);
     }));
   });
   describe('#delete()', () => {
@@ -126,5 +152,10 @@ describe('MovieDetailComponent', () => {
       expect(service.getMovieFromId).toHaveBeenCalled();
     }));
   });
-
+  it('Setting enabled to false disables the submit button', () => {
+    component.enabled = false;
+    submitEl = fixture.debugElement.query(By.css('button'));
+    fixture.detectChanges();
+    expect(submitEl.nativeElement.disabled).toBeTruthy();
+  });
 });

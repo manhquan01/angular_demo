@@ -4,15 +4,25 @@
         <div className="panel panel-warning">
             <h5>Bạn đã chọn phim:</h5>  <h4>{{movie.name | uppercase }}</h4>
             <div className="panel-body">
-              <form>
+              <!-- <form name="myForm">
                   <div class="form-group">
                       <label>Tên phim: </label>
-                      <input class="form-control" [(ngModel)]="movie.name" name="name" >
+                      <input class="form-control" [(ngModel)]="movie.name" #name="ngModel"  required minlength="3" id="name" name="name" required>                      
+                      <div *ngIf="name.invalid && (name.dirty || name.touched)"
+                            class="alert alert-danger">
+                        <div *ngIf="name.errors.required">
+                          Name is required.
+                        </div>
+                        <div *ngIf="name.errors.minlength">
+                          Name must be at least 3 characters long.
+                        </div>
+                      </div>        
+
                       <label class="mt-15" for="">Năm sản xuất: </label>
                       <input class="form-control" [(ngModel)]="movie.year" name="year"  >
                       <div class="mt-15" style="float: right;">
                         <button class="btn btn-primary mr-15 save" 
-                                (click)="save()"> Lưu
+                                (click)="save()" [disabled]="!enabled"> Lưu
                         </button>
                         <button title="xóa phim"
                                 class="btn btn-danger mr-15 delete"
@@ -21,6 +31,52 @@
                         <button class="goBack btn btn-info " id="goBack" (click)="goBack();">quay lại</button>
                       </div>
                     </div>
+              </form> -->
+              <form novalidate class="row justify-content-md-center" #form="ngForm">
+                <div class="col-md-8">
+                  <div class="form-group row">
+                    <label for="example-text-input" class="col-md-2 col-form-label">Tên phim:</label>
+                    <div class="col-md-10">
+                      <input  required minlength="3"  
+                              name="name" id="example-text-input name" 
+                              class="form-control name" type="text" 
+                              [(ngModel)]="movie.name"
+                              required
+                      >
+                           
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="example-email-input" class="col-md-2 col-form-label">Năm:</label>
+                    <div class="col-md-10">
+                      <input class="form-control" type="number" 
+                              id="example-email-input" 
+                              [(ngModel)]="movie.year" 
+                              name="year"
+                              required
+                              pattern="^[1-9]+[0-9]*$"
+                      >
+                      
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <div class="col-md-10 offset-md-2">
+                      <!-- <button class="btn btn-primary" type="submit">Save</button> -->
+                      <button class="btn btn-primary mr-15 save" 
+                             (click)="save()" 
+                             [disabled]="!enabled" 
+                             [disabled]="!form.valid"
+                            > Lưu</button>
+                      <button title="xóa phim"
+                              class="btn btn-danger mr-15 delete"
+                              (click)="delete(movie.id)"
+                              >Xóa </button>
+                      <button class="goBack btn btn-info " 
+                              id="goBack" (click)="goBack();"
+                              >quay lại</button>
+                    </div>
+                  </div>
+                </div>
               </form>
           </div>
         </div>
