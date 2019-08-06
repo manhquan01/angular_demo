@@ -4,14 +4,56 @@
     <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
             <div className="panel panel-warning">
                 <div className="panel-body">
-                  <form>
+                  <form name="formAdd" #formAdd="ngForm">
                       <div class="form-group">
                           <label>Tên phim: </label>
-                          <input class="form-control" #movieName placeholder="Tên phim">
+                          <input class="form-control" 
+                                  id='movie-name-input'  
+                                  #movieName 
+                                  placeholder="Tên phim"
+                                  name="name2"
+                                  [(ngModel)]="movieName.value"
+                                  #name2="ngModel"
+                                  required
+                                  minlength="3"
+                                  >
+                                   <!-- validate -->
+                            <div *ngIf="name2.invalid && (name2.dirty || name2.touched)"
+                                class="alert alert-danger mt-5 "
+                                id='validate-name'
+                              >
+                                  <div *ngIf="name2.errors.required">
+                                    Không được để trống tên phim.
+                                  </div>
+                                  <div *ngIf="name2.errors.minlength">
+                                    Độ dài của tên phim tối thiểu 3 kí tự.
+                                  </div>
+                              </div> 
+                      <!-- end validate  -->
                           <label class="mt-5" for="">Năm sản xuất: </label>
-                          <input #yearMovie placeholder="Năm sx" class="form-control" >
+                          <input #yearMovie 
+                                  placeholder="Năm sx"
+                                  class="form-control" 
+                                  required
+                                  id='movie-year-input'
+                                  type="number"
+                                  [(ngModel)]="yearMovie.value"
+                                  name="year2"
+                                  #year2="ngModel"
+                          >
+                          <!-- validate -->
+                            <div *ngIf="year2.invalid && (year2.dirty || year2.touched)"
+                            class="alert alert-danger">
+                                <div *ngIf="year2.errors.required">
+                                  Không được để trống năm sẳn xuất
+                                </div>
+                            </div> 
+                          <!-- end validate  -->
                           <div class="">
-                              <button style="float: right;" class="btn btn-primary mt-15 btnAdd" (click)="add(movieName.value, yearMovie.value); movieName.value=''; yearMovie.value=''">
+                              <button style="float: right;" 
+                              [disabled]="!formAdd.valid"
+                              class="btn btn-primary mt-15 btnAdd" 
+                              (click)="add(movieName.value, yearMovie.value); movieName.value=''; yearMovie.value=''">
                                   Thêm
                               </button>
                           </div>
@@ -27,7 +69,7 @@
         <table class="table table-bordered table-hover">
           <thead>
             <tr>
-              <th class="text-center">STT</th>
+              <th class="text-center stt">STT</th>
               <th class="text-center">Tên</th>
               <th class="text-center">Năm</th>
               <th class="text-center">Hành động</th>
@@ -47,13 +89,15 @@
               </td>
               <td class="text-center">
                 <button title="xóa phim"
-                        class="btn btn-warning mr-15 btnEdit">
+                        class="btn btn-warning mr-15 btnEdit"
+                        id='btnEdit{{eachMovie.id}}' >
                   <a routerLink="/detail/{{eachMovie.id}}">
                     Sửa
                   </a>
                 </button>
                 <button title="xóa phim"
                         class="btn btn-danger btnDelete"
+                        id='btnDelete{{eachMovie.id}}'
                         (click)="delete(eachMovie.id)">
                   Xóa
                 </button> 

@@ -13,6 +13,7 @@ import { By } from '@angular/platform-browser';
 import { FakeMovieService } from '../fake-movie-service.service';
 import { UserApi } from 'src/app/data/user-api';
 import { DebugElement } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 export const mock: Movie[] =[
@@ -106,7 +107,7 @@ describe('ListMovieComponent#2', () => {
   beforeEach(async( () => {
     TestBed.configureTestingModule({
       declarations: [MoviesComponent, MovieInfoComponent],
-      imports: [RouterTestingModule, HttpClientTestingModule],
+      imports: [RouterTestingModule, HttpClientTestingModule, ReactiveFormsModule, FormsModule],
       providers: [
         { provide: MovieService, useClass: DataStub }
       ]
@@ -123,8 +124,34 @@ describe('ListMovieComponent#2', () => {
     componentInfoComponent = fixtureMovieInfo.componentInstance;
     fixtureMovieInfo.detectChanges();
   });
+
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+  // it('should have title eror if less than 3 symbol provided',
+  //   fakeAsync(() => {
+  //     // component.activeForm = 'form';
+  //     fixture.detectChanges();
+  //     let form = component.formAdd.form;
+  //     tick();
+  //     setTimeout(() => {
+  //       form.setValue({
+  //         name2: 'to',
+  //         year2: '1995',
+  //       });
+  //     }, );
+  //     form.controls.name2.markAllAsTouched();
+  //     fixture.detectChanges();
+  //     expect(form.controls.name2.errors).toBeTruthy();
+  //     expect(nativeElement.querySelector('.name-group').textContent).toContain('Name must be at least 3 characters long.');
+  //   })
+  // );
+
+  it('should find the stt with fixture.debugElement.query(By.css)', () => {
+    const sttDe: DebugElement = fixture.debugElement;
+    const paragraphDe = sttDe.query(By.css('.stt'));
+    const stt: HTMLElement = paragraphDe.nativeElement;
+    expect(stt.textContent).toEqual('STT');
   });
   it('should call to a function add() when clicked', () => {
     const spy = spyOn(component, 'add');
@@ -155,7 +182,7 @@ describe('ListMovieComponent#2', () => {
     expect(movieService.deleteMovie).toHaveBeenCalled();
   }));
 
-  it('should have called function onselect()', fakeAsync(() =>{
+  it('should have called function onselect()', fakeAsync(() => {
     const onSelect: DebugElement = fixture.debugElement;
     spyOn(movieService, 'getMovies').and.returnValue(of(fakeMovie));
     component.ngOnInit();
@@ -168,10 +195,8 @@ describe('ListMovieComponent#2', () => {
     expect(component.onSelect).toHaveBeenCalledWith(fakeMovie[0]);
   }));
   // it ('should use the movie name from the service', () => {
-  //   // let fixture = TestBed.createComponent(MoviesComponent);
-  //   // let component = fixture.debugElement.componentInstance;
-  //   // let movieService = fixture.debugElement.injector.get(MovieService);
   //   fixture.detectChanges();
-  //   expect(movieService.getMovies).toEqual(component.movies);
+  //   // tslint:disable-next-line: max-line-length
+  //   expect(movieService.getMovieFromId).toHaveBeenCalledWith(fakeMovie[0].id).toEqual(component.onSelect).toHaveBeenCalledWith(fakeMovie[0].id);
   // });
 });

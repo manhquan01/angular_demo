@@ -1,20 +1,24 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { Movie } from 'src/models/movie';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { MovieService } from '../../movie.service';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, NgForm, ControlContainer } from '@angular/forms';
 
 @Component({
   selector: 'app-movie-detail',
   templateUrl: './movie-detail.component.html',
-  styleUrls: ['./movie-detail.component.css']
+  styleUrls: ['./movie-detail.component.css'],
+  viewProviders: [{ provide: ControlContainer, useExisting: NgForm }]
+
 })
 export class MovieDetailComponent implements OnInit {
   movies: Movie[];
   movieForm;
+  form2: FormGroup;
   @Input() enabled = true;
   @Input() movie: Movie;
+  @ViewChild(NgForm, {static: false}) form: NgForm;
   constructor(
     public movieService: MovieService,
     private route: ActivatedRoute,
@@ -25,21 +29,8 @@ export class MovieDetailComponent implements OnInit {
 
   ngOnInit() {
     this.getMovieFromRoute();
-    // this.movieForm = new FormGroup({
-    //   name : new FormControl(this.movie.name, [
-    //     Validators.required,
-    //     Validators.minLength(3),
-    //     Validators.maxLength(20),
-    //     // forbiddenNameValidator(/bob/i)
-    //   ]),
-    //   year: new FormControl(this.movie.name, [
-    //     Validators.required,
-    //   ])
-    // });
   }
-  // get name() { return this.movieForm.get('name'); }
-  // get year() { return this.movieForm.get('year'); }
-  
+
   getMovieFromRoute(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     // console.log(this.route.snapshot.paramMap);

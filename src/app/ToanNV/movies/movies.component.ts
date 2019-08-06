@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Movie } from 'src/models/movie';
 import { MovieService } from 'src/app/movie.service';
+import { FormGroup, FormBuilder, NgForm } from '@angular/forms';
 // import { fakeMovies } from '../fake-movies';
 // import { MovieService } from '../movie.service';
 
@@ -10,12 +11,17 @@ import { MovieService } from 'src/app/movie.service';
   styleUrls: ['./movies.component.css']
 })
 export class MoviesComponent implements OnInit {
-  constructor(private movieService: MovieService) {
+  constructor(
+    private movieService: MovieService,
+    // private formBuilder: FormBuilder
+    ) {
     // ngay khi component khởi tạo thì thuộc tính movieService cũng được khởi tạo theo
   }
   // movies = fakeMovies;
+  // movieFormGroup: FormGroup;
   movies: Movie[];
   movie: {name: string };
+  @ViewChild(NgForm, {static: false}) formAdd: NgForm;
 
   selectedMovie: Movie; // định nghĩa hàm khi con trỏ chạm vào list item
   getMoviesFromServices(): void { // lấy dữ liệu từ service đổ vào mảng movies

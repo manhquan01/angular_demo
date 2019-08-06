@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
-// import 'jasmine';
+import 'jasmine';
 import { MovieDetailComponent } from './movie-detail.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, FormControl } from '@angular/forms';
 import { MovieService } from 'src/app/movie.service';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
@@ -39,12 +39,13 @@ describe('MovieDetailComponent', () => {
   let service: MovieService;
   let debugElement: DebugElement;
   let submitEl: DebugElement;
+  let nativeElement: HTMLElement;
 
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ MovieDetailComponent ],
-      imports: [FormsModule, RouterTestingModule, HttpClientTestingModule],
+      imports: [FormsModule, RouterTestingModule, HttpClientTestingModule, ReactiveFormsModule],
       // schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
       // providers: [MovieService]
       providers: [{
@@ -59,6 +60,7 @@ describe('MovieDetailComponent', () => {
     fixture = TestBed.createComponent(MovieDetailComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    nativeElement = fixture.nativeElement;
 
     service = TestBed.get(MovieService);
     debugElement = fixture.debugElement;
@@ -67,7 +69,27 @@ describe('MovieDetailComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
+  // it('form invalid when empty', () => {
+  //   expect(component.form.valid).toBeFalsy();
+  // });
+  // it('should have title eror if less than 3 symbol provided',
+  //   fakeAsync(() => {
+  //     // component.activeForm = 'form';
+  //     fixture.detectChanges();
+  //     let form = component.form.form;
+  //     tick();
+  //     setTimeout(() => {
+  //       form.setValue({
+  //         name2: 'To',
+  //         year2: '1995',
+  //       });
+  //     }, );
+  //     form.controls.name2.markAllAsTouched();
+  //     fixture.detectChanges();
+  //     expect(form.controls.name2.errors).toBeTruthy();
+  //     expect(nativeElement.querySelector('.name-group').textContent).toContain('Name must be at least 3 characters long.');
+  //   })
+  // );
   describe('#goBack', () => {
     it('should call right function in component when click buttun goBack', () => {
       spyOn(component, 'goBack').and.callThrough();

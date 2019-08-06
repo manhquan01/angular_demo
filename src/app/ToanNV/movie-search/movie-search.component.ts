@@ -18,18 +18,18 @@ export class MovieSearchComponent implements OnInit {
 
   //trích xuất movieSerrvice
   constructor(private movieService: MovieService) { }
-  search(searchedString: string): void{
-    console.log(`searchedString = ${searchedString}`);
-    this.searchedSubject.next(searchedString); //khi gõ 1 kí tự vào thì kí tự mới sẽ dc đẩy dần vào trong strim để xly bất đồng bộ
-  }
+  // search(searchedString: string): void{
+  //   console.log(`searchedString = ${searchedString}`);
+  //   this.searchedSubject.next(searchedString); //khi gõ 1 kí tự vào thì kí tự mới sẽ dc đẩy dần vào trong strim để xly bất đồng bộ
+  // }
 
   ngOnInit() {
-    this.movies$ = this.searchedSubject.pipe(
-      debounceTime(300), //khoảng thời gian giữa 2 lần bấm
-      distinctUntilChanged(), //khi gõ 2 tring giống nhau thì nó không lấy dl nữa
-      //đổ dữ liệu vào trong search movie
-      switchMap((searchedString: string) => this.movieService.searchMovies(searchedString)),
-    );
+    // this.movies$ = this.searchedSubject.pipe(
+    //   debounceTime(300), //khoảng thời gian giữa 2 lần bấm
+    //   distinctUntilChanged(), //khi gõ 2 tring giống nhau thì nó không lấy dl nữa
+    //   //đổ dữ liệu vào trong search movie
+    //   switchMap((searchedString: string) => this.movieService.searchMovies(searchedString)),
+    // );
   }
 
 }

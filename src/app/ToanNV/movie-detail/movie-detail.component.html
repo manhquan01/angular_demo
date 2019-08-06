@@ -2,61 +2,56 @@
 <div *ngIf="movie" class="row">
     <div class="col-xs-4 mt-15">
         <div className="panel panel-warning">
-            <h5>Bạn đã chọn phim:</h5>  <h4>{{movie.name | uppercase }}</h4>
-            <div className="panel-body">
-              <!-- <form name="myForm">
-                  <div class="form-group">
-                      <label>Tên phim: </label>
-                      <input class="form-control" [(ngModel)]="movie.name" #name="ngModel"  required minlength="3" id="name" name="name" required>                      
-                      <div *ngIf="name.invalid && (name.dirty || name.touched)"
-                            class="alert alert-danger">
-                        <div *ngIf="name.errors.required">
-                          Name is required.
-                        </div>
-                        <div *ngIf="name.errors.minlength">
-                          Name must be at least 3 characters long.
-                        </div>
-                      </div>        
+            <h5>Bạn đã chọn phim:</h5> 
+            <div class="movie-id1" id="movie-id" >{{movie.id}}</div> 
+            <div class="movie-name1" id="movie-name"><h4>{{movie.name}}</h4></div>  
+            <div class="movie-year1" id="movie-year"><h4>{{movie.year}}</h4></div>  
 
-                      <label class="mt-15" for="">Năm sản xuất: </label>
-                      <input class="form-control" [(ngModel)]="movie.year" name="year"  >
-                      <div class="mt-15" style="float: right;">
-                        <button class="btn btn-primary mr-15 save" 
-                                (click)="save()" [disabled]="!enabled"> Lưu
-                        </button>
-                        <button title="xóa phim"
-                                class="btn btn-danger mr-15 delete"
-                                (click)="delete(movie.id)">Xóa
-                        </button>
-                        <button class="goBack btn btn-info " id="goBack" (click)="goBack();">quay lại</button>
-                      </div>
-                    </div>
-              </form> -->
-              <form novalidate class="row justify-content-md-center" #form="ngForm">
+            <div className="panel-body">
+
+              <form novalidate class="row justify-content-md-center" #form="ngForm" >
                 <div class="col-md-8">
-                  <div class="form-group row">
-                    <label for="example-text-input" class="col-md-2 col-form-label">Tên phim:</label>
+                  <div class="form-group name-group row">
+                    <label for="name-movie-input" class="col-md-2 col-form-label">Tên phim:</label>
                     <div class="col-md-10">
                       <input  required minlength="3"  
-                              name="name" id="example-text-input name" 
+                              name="name2" id="name2" 
                               class="form-control name" type="text" 
                               [(ngModel)]="movie.name"
-                              required
+                              #name2="ngModel"
                       >
-                           
+                      <!-- validate -->
+                        <div *ngIf="name2.invalid && (name2.dirty || name2.touched)"
+                        class="alert alert-danger mt-5">
+                            <div *ngIf="name2.errors.required">
+                              Không được để trống tên phim.
+                            </div>
+                            <div *ngIf="name2.errors.minlength">
+                              Độ dài của tên phim tối thiểu 3 kí tự.
+                            </div>
+                        </div> 
+                      <!-- end validate  -->
                     </div>
                   </div>
-                  <div class="form-group row">
-                    <label for="example-email-input" class="col-md-2 col-form-label">Năm:</label>
+                  <div class="form-group year-group row">
+                    <label for="year-input" class="col-md-2 col-form-label">Năm:</label>
                     <div class="col-md-10">
                       <input class="form-control" type="number" 
-                              id="example-email-input" 
+                              id="year-input" 
                               [(ngModel)]="movie.year" 
                               name="year"
                               required
                               pattern="^[1-9]+[0-9]*$"
+                              #year2="ngModel"
                       >
-                      
+                      <!-- validate -->
+                      <div *ngIf="year2.invalid && (year2.dirty || year2.touched)"
+                      class="alert alert-danger">
+                          <div *ngIf="year2.errors.required">
+                            Không được để trống năm sẳn xuất
+                            </div>
+                      </div> 
+                    <!-- end validate  -->
                     </div>
                   </div>
                   <div class="form-group row">
@@ -66,6 +61,7 @@
                              (click)="save()" 
                              [disabled]="!enabled" 
                              [disabled]="!form.valid"
+                             id="btnSave"
                             > Lưu</button>
                       <button title="xóa phim"
                               class="btn btn-danger mr-15 delete"
