@@ -1,6 +1,7 @@
 import {browser, by, element, ElementFinder} from 'protractor';
 export class AppPage {
 
+    // Employees Page
     navigateTo() {
         return browser.get(browser.baseUrl) as Promise<any>;
     }
@@ -18,11 +19,32 @@ export class AppPage {
     }
 
     getButtonAddNewEmployee() {
-        return element(by.css('#formInsert'));
+        return element(by.css('.themNhanVien'));
     }
 
     getEmployeeButton() {
         return element(by.css('[ng-reflect-router-link="employees"]'));
+    }
+
+    getEmployeeNameFormAddNew() {
+        return element(by.css('#name'));
+    }
+
+    getIdEmployeeFormAddNew() {
+        return element(by.css('#id_employee'));
+    }
+
+    getFormAddNew() {
+        return element(by.css('.formSubmit'));
+    }
+
+    getButtonSubmitAddNewEmployee() {
+        return element(by.css('.addNewEmployee'));
+    }
+
+    // Detail Employee Page
+    navigateToEmployeeDetail(id: number) {
+        return browser.get(`/employee/detail/${id}`);
     }
 
     getEmployeeById(id: number): ElementFinder {
@@ -33,11 +55,8 @@ export class AppPage {
         return element(by.css('app-employee-detail h1')).getText();
     }
 
-    navigateToEmployeeDetail(id: number) {
-        return browser.get(`/employee/detail/${id}`);
-    }
-
     getButtonGoBack() {
         return element(by.css('.goBack'));
     }
+
 }
