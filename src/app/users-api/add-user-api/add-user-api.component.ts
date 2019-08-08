@@ -37,7 +37,7 @@ export class AddUserApiComponent implements OnInit {
             user.email = this.formAddUser.value.email;
             user.phoneNumber = this.formAddUser.value.phone_number;
 
-            this.userService.addUserApi(user).subscribe();
+            this.userService.addUserApi(user).subscribe(() =>  this.goBack());
         }
     }
 

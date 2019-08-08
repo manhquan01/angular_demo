@@ -45,6 +45,7 @@
         class="btn btn-danger waves-effect waves-light">Back</button>
         <button type="submit"
         id="save_post"
+        [disabled] = "!formEditUser.valid"
         class="btn btn-info waves-effect waves-light">Update</button>
     </form>
 </div>
