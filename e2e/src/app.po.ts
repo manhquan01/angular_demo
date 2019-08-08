@@ -20,8 +20,8 @@ export class AppPage {
         // return browser.get(browser.baseUrl) as Promise<any>;
         return browser.get('/movies');
     }
-    getMoviePage(): void {
-        browser.get('/movies');
+    async getMoviePage(): Promise<void> {
+        await browser.get('/movies');
     }
     setName(text: string) {
         this.movieName.sendKeys(text);
@@ -39,6 +39,12 @@ export class AppPage {
     submitBtnDelete(id: any) {
         return element(by.css('#btnDelete' + id));
         // this.btnEdit.click();
+    }
+    onSelectMovie(id: any) {
+        return element(by.css('#onSelect' + id));
+    }
+    getInfoMovie() {
+        return element(by.css('app-movie-info h4')).getText() as Promise<string>;
     }
     getTitleText() {
         return element(by.css('app-root h6')).getText() as Promise<string>;

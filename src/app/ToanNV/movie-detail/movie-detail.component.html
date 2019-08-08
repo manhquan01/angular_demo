@@ -3,9 +3,28 @@
     <div class="col-xs-4 mt-15">
         <div className="panel panel-warning">
             <h5>Bạn đã chọn phim:</h5> 
-            <div class="movie-id1" id="movie-id" >{{movie.id}}</div> 
-            <div class="movie-name1" id="movie-name"><h4>{{movie.name}}</h4></div>  
-            <div class="movie-year1" id="movie-year"><h4>{{movie.year}}</h4></div>  
+            <table class="table table-bordered table-hover">
+              <thead>
+                <tr>
+                  <th class="text-center stt">Id</th>
+                  <th class="text-center">Tên</th>
+                  <th class="text-center">Năm</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="text-center">
+                  <td class="movie-id1" id="movie-id">
+                      {{movie.id}}
+                  </td>
+                  <td class="movie-name1" id="movie-name"> 
+                      {{movie.name}}
+                  </td>
+                  <td class="movie-year1" id="movie-year"> 
+                        {{movie.year}}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
 
             <div className="panel-body">
 

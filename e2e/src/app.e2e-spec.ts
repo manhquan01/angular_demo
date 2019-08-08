@@ -4,6 +4,7 @@ import * as faker from 'faker';
 import { MovieDetailPage } from './movie/detail.po';
 
 
+
 describe('workspace-project App', () => {
     let page: AppPage;
     // let movieDetailPage: MovieDetailPage;
@@ -12,23 +13,66 @@ describe('workspace-project App', () => {
         page = new AppPage();
     });
 
-    it('should display welcome message', () => {
-        page.navigateTo();
-        expect(page.getTitleText()).toEqual('PHP Fresher GMOToanNV');
-    });
-    it('should display top 5 movie', () => {
-        // page.navigateTo();
-        page.getAboutButton().click();
-        expect(page.getDasboardText()).toEqual('Top 5 movie');
-    });
-
-    it('should delete movie', () => {
-        const id = '19';
+    function add(name, year) {
+        page.setName(name);
+        page.setYear(year);
+        page.submmitReactive();
+    }
+    function deleteMovie(id) {
         page.submitBtnDelete(id).click();
-
         expect(page.submitBtnDelete(id)).not.toBeNull();
-        // browser.pause(4200);
-    });
+
+    }
+    // it('check function add movie', () => {
+    //     add('toan', '1995');
+    // });
+    // it('check function deleteMovie', () => {
+    //     deleteMovie('13');
+    // });
+
+
+    // it('should display welcome message', () => {
+    //     page.navigateTo();
+    //     expect(page.getTitleText()).toEqual('PHP Fresher GMOToanNV');
+    // });
+    // it('should display top 5 movie', () => {
+    //     // page.navigateTo();
+    //     page.getAboutButton().click();
+    //     expect(page.getDasboardText()).toEqual('Top 5 movie');
+    // });
+
+    // it('show info movie when click name', () => {
+    //     const id = '5';
+
+    //     page.onSelectMovie(id).click();
+    //     expect(page.getInfoMovie()).toBeTruthy();
+    // });
+    // it('should have reactive form add movie working', () => {
+    //     const name = 'toan';
+    //     const year = '1995';
+    //     const id = '13';
+
+    //     page.setName(name);
+    //     page.setYear(year);
+    //     page.submmitReactive();
+    //     page.submitEdit(id).click();
+
+    //     const movieDetailPage = new MovieDetailPage(id);
+
+    //     expect(movieDetailPage.getId()).toEqual(id);
+    //     expect(movieDetailPage.getName()).toEqual(name);
+    //     expect(movieDetailPage.getYear()).toEqual(year);
+    //     // browser.pause(4200);
+    // });
+
+    // it('should btn delete movie working', () => {
+    //     const id = '13';
+    //     page.submitBtnDelete(id).click();
+
+    //     expect(page.submitBtnDelete(id)).not.toBeNull();
+    //     // browser.pause(4200);
+    // });
+
 
     // it('should validate add form', () => {
     //     const name = '';
@@ -68,44 +112,28 @@ describe('workspace-project App', () => {
     //     expect(movieDetailPage.getYear()).toEqual(year);
     // });
 
-    // it('should have reactive form edit working', () => {
-    //     const name = 'toan';
-    //     const year = '1995';
-    //     const id = '17';
-
-    //     // page.submitEdit(id).click();
-
-    //     const movieDetailPage = new MovieDetailPage(id);
-    //     movieDetailPage.getPage(id);
-    //     movieDetailPage.setName(name);
-    //     movieDetailPage.setYear(year);
-    //     movieDetailPage.getSaveButton();
-
-    //     // page.submitEdit(id).click();
-
-    //     // expect(movieDetailPage.getId()).toEqual(id);
-    //     // expect(movieDetailPage.getName()).toEqual(name);
-    //     // expect(movieDetailPage.getYear()).toEqual(year);
-    //     browser.pause(4200);
-    // });
-
-    it('should have reactive form add movie working', () => {
+    it('should have reactive form edit working', () => {
         const name = 'toan';
         const year = '1995';
-        const id = '19';
+        const id = '12';
 
-        page.setName(name);
-        page.setYear(year);
-        page.submmitReactive();
-        page.submitEdit(id).click();
+        // const movieDetailPage = new MovieDetailPage(id);
+        // movieDetailPage.getPage(id);
+        browser.get('/detail/' + id);
+        element(by.model('movie.name')).sendKeys('DELETE');
 
-        const movieDetailPage = new MovieDetailPage(id);
+        // movieDetailPage.setName(name);
+        // movieDetailPage.setYear(year);
+        // movieDetailPage.getSaveButton();
 
-        expect(movieDetailPage.getId()).toEqual(id);
-        expect(movieDetailPage.getName()).toEqual(name);
-        expect(movieDetailPage.getYear()).toEqual(year);
-        // browser.pause(4200);
+        // page.submitEdit(id).click();
+
+        // expect(movieDetailPage.getId()).toEqual(id);
+        // expect(movieDetailPage.getName()).toEqual(name);
+        // expect(movieDetailPage.getYear()).toEqual(year);
+        browser.pause(4200);
     });
+
     afterEach(async () => {
         // Assert that there are no errors emitted from the browser
         const logs = await browser.manage().logs().get(logging.Type.BROWSER);

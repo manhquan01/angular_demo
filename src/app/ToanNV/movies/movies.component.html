@@ -80,7 +80,9 @@
               <td class="text-center">
                   {{eachMovie.id}}
               </td>
-              <td class="onSelect" [class.selected]="eachMovie === selectedMovie"
+              <td class="onSelect" 
+                  id='onSelect{{eachMovie.id}}' 
+                  [class.selected]="eachMovie === selectedMovie"
                   (click)="onSelect(eachMovie)"> 
                   {{eachMovie.name}}
               </td>
