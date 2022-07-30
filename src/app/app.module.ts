@@ -12,6 +12,20 @@ import { MessageComponent } from './Categories/message/message.component';
 import {MessageService} from './message.service';
 import { ListUsersComponent } from './users-api/list-users/list-users.component';
 import { HttpClientModule} from '@angular/common/http';
+import { EmployeesComponent } from './employees/employees.component';
+import { EmployeeService } from './employee.service';
+import { EmployeeDetailComponent } from './employee-detail/employee-detail.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import { EditUserApiComponent } from './users-api/edit-user-api/edit-user-api.component';
+import { AddUserApiComponent } from './users-api/add-user-api/add-user-api.component';
+import { MoviesComponent } from './ToanNV/movies/movies.component';
+import { MovieService } from './movie.service';
+import { DashboardComponent } from './ToanNV/dashboard/dashboard.component';
+import { MovieDetailComponent } from './ToanNV/movie-detail/movie-detail.component';
+import { EditEmployeeComponent } from './edit-employee/edit-employee.component';
+import { RouterModule } from '@angular/router';
+
 
 @NgModule({
     declarations: [
@@ -21,16 +35,29 @@ import { HttpClientModule} from '@angular/common/http';
         ListCategoriesComponent,
         DetailCategoryComponent,
         MessageComponent,
-        ListUsersComponent
+        ListUsersComponent,
+        EmployeesComponent,
+        EmployeeDetailComponent,
+        EditUserApiComponent,
+        AddUserApiComponent,
+        MoviesComponent,
+        MovieDetailComponent,
+        DashboardComponent,
+        EditEmployeeComponent
     ],
     imports: [
         BrowserModule,
         AppRoutingModule,
         HttpClientModule,
+        ReactiveFormsModule,
+        FormsModule,
+        RouterModule
     ],
     providers: [
         UserService,
         MessageService,
+        EmployeeService,
+        MovieService,
     ],
     bootstrap: [AppComponent]
 })
